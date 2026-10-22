@@ -1,0 +1,9 @@
+Post-Apocalypse Pixel Art Asset Pack - by TheLazyStone
+https://thelazystone.itch.io/post-apocalypse-pixel-art-asset-pack
+
+License: see LICENSE.txt in this folder.
+- Free for NON-commercial use only. Commercial use requires paying at least $2.
+- No redistribution. Author confirmed a private repo shared with teammates is OK.
+- Credit optional: "TheLazyStone".
+
+Imported: PNG files and LICENSE.txt only (.gif guides/previews removed).
