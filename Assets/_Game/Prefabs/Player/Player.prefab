@@ -291,5 +291,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
   inputReader: {fileID: 6903091261374229689}
-  targetCamera: {fileID: 0}
+  targetCamera: {fileID: 3603005349777668038, guid: 7d8df6e0efba24049a61b372119a2095, type: 3}
   spriteAngleOffset: -90
