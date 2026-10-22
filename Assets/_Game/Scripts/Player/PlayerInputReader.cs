@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour
 {
     [SerializeField] private InputActionReference moveAction;
+    [SerializeField] private InputActionReference attackAction;
+
+    public event Action AttackPressed;
 
     public Vector2 MoveInput => moveAction.action.ReadValue<Vector2>();
 
@@ -13,10 +17,20 @@ public class PlayerInputReader : MonoBehaviour
     private void OnEnable()
     {
         moveAction.action.Enable();
+        attackAction.action.performed += OnAttackPerformed;
+        attackAction.action.Enable();
     }
 
     private void OnDisable()
     {
         moveAction.action.Disable();
+        attackAction.action.performed -= OnAttackPerformed;
+        attackAction.action.Disable();
+    }
+
+    // Button action fires performed once per press, so holding does not auto-fire
+    private void OnAttackPerformed(InputAction.CallbackContext context)
+    {
+        AttackPressed?.Invoke();
     }
 }
