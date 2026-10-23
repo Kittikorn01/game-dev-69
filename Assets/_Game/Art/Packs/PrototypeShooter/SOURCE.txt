@@ -1,7 +1,0 @@
-TP Shooter Prototype - by toosday (Klink/Tazmoe)
-https://toosday.itch.io/tp-shooter-assets
-
-License: not stated on the itch.io page (listed as free).
-Ask the author before any commercial use.
-
-Imported: PNG files and readme.txt only (.gif removed).
