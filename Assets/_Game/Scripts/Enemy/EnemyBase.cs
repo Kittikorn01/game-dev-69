@@ -13,6 +13,8 @@ public abstract class EnemyBase : MonoBehaviour
     protected Health health;
 
     private float nextAttackTime;
+    // shortcut: single stun source, switch to a counter if several effects can stun at once
+    private bool isStunned;
 
     protected virtual void Awake()
     {
@@ -34,8 +36,20 @@ public abstract class EnemyBase : MonoBehaviour
         health.Died -= OnDied;
     }
 
+    public void SetStunned(bool stunned)
+    {
+        isStunned = stunned;
+    }
+
     protected virtual void FixedUpdate()
     {
+        // Stunned enemies neither move nor attack
+        if (isStunned)
+        {
+            body.linearVelocity = Vector2.zero;
+            return;
+        }
+
         if (player == null) return;
 
         if (Vector2.Distance(body.position, player.position) > attackRange)
