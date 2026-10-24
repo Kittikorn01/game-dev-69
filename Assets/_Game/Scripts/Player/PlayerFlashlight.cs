@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class PlayerFlashlight : MonoBehaviour
 {
     [SerializeField] private PlayerInputReader inputReader;
+    [SerializeField] private PlayerBattery battery;
     [SerializeField] private Light2D flashlight;
     // ambient glow around the player, dimmed while the flashlight is on
     [SerializeField] private Light2D ambientLight;
@@ -31,8 +32,18 @@ public class PlayerFlashlight : MonoBehaviour
         inputReader.FlashlightPressed -= Toggle;
     }
 
+    private void Update()
+    {
+        if (!flashlight.enabled) return;
+
+        battery.Drain(Time.deltaTime);
+        if (battery.IsEmpty) SetFlashlight(false);
+    }
+
     private void Toggle()
     {
+        if (!flashlight.enabled && battery.IsEmpty) return;
+
         SetFlashlight(!flashlight.enabled);
     }
 
