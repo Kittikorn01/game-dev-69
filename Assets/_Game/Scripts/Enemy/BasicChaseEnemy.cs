@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// First step: chase only. Uses the existing EnemyBase and Health unchanged.
+// Chases the player and attacks in range. Uses the existing EnemyBase and Health unchanged.
 [DisallowMultipleComponent]
 public class BasicChaseEnemy : EnemyBase
 {
@@ -34,9 +34,10 @@ public class BasicChaseEnemy : EnemyBase
         body.linearVelocity = offset.normalized * speed;
     }
 
+    // Range attack like DemoEnemy: EnemyBase calls this once per cooldown inside attackRange.
     protected override void Attack()
     {
-        // Intentionally empty: chasing only, no contact damage yet.
+        player.GetComponent<IDamageable>()?.TakeDamage(damage);
     }
 
     protected override void OnDisable()
