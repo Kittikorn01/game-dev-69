@@ -8,6 +8,7 @@ public class PlayerAudio : MonoBehaviour
 {
     [SerializeField] private PlayerInputReader inputReader;
     [SerializeField] private PlayerAmmo ammo;
+    [SerializeField] private PlayerBattery battery;
     [SerializeField] private Light2D flashlight;
 
     [Header("Shoot")]
@@ -18,6 +19,11 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private AudioClip emptyClip;
     [SerializeField, Range(0f, 1f)] private float emptyVolume = 0.6f;
 
+    [Header("Pickup")]
+    [SerializeField] private AudioClip ammoPickupClip;
+    [SerializeField] private AudioClip batteryPickupClip;
+    [SerializeField, Range(0f, 1f)] private float pickupVolume = 0.8f;
+
     [Header("Flashlight")]
     [SerializeField] private AudioClip flashlightOnClip;
     [SerializeField] private AudioClip flashlightOffClip;
@@ -26,6 +32,7 @@ public class PlayerAudio : MonoBehaviour
     private AudioSource audioSource;
     private int lastAmmo;
     private int lastShotFrame = -1;
+    private float lastBattery;
     private bool lastFlashlightOn;
 
     private void Awake()
@@ -37,22 +44,25 @@ public class PlayerAudio : MonoBehaviour
     private void Start()
     {
         lastAmmo = ammo.Current;
+        lastBattery = battery.Current;
         lastFlashlightOn = flashlight.enabled;
     }
 
     private void OnEnable()
     {
         ammo.AmmoChanged += OnAmmoChanged;
+        battery.BatteryChanged += OnBatteryChanged;
         inputReader.AttackPressed += OnAttackPressed;
     }
 
     private void OnDisable()
     {
         ammo.AmmoChanged -= OnAmmoChanged;
+        battery.BatteryChanged -= OnBatteryChanged;
         inputReader.AttackPressed -= OnAttackPressed;
     }
 
-    // ammo going down = a bullet was really fired
+    // ammo going down = a bullet was really fired, going up = ammo picked up
     private void OnAmmoChanged(int current)
     {
         if (current < lastAmmo)
@@ -60,7 +70,21 @@ public class PlayerAudio : MonoBehaviour
             lastShotFrame = Time.frameCount;
             Play(shootClip, shootVolume, Random.Range(shootPitchRange.x, shootPitchRange.y));
         }
+        else if (current > lastAmmo)
+        {
+            Play(ammoPickupClip, pickupVolume, 1f);
+        }
         lastAmmo = current;
+    }
+
+    // battery drains every frame, so only an increase means a pickup
+    private void OnBatteryChanged(float normalized)
+    {
+        if (battery.Current > lastBattery)
+        {
+            Play(batteryPickupClip, pickupVolume, 1f);
+        }
+        lastBattery = battery.Current;
     }
 
     private void OnAttackPressed()
@@ -81,6 +105,13 @@ public class PlayerAudio : MonoBehaviour
         if (clip == null) clip = flashlightOnClip;
         Play(clip, flashlightVolume, 1f);
     }
+
+    // test only: in Play mode, click the ⋮ menu on this component to fake a pickup
+    [ContextMenu("Test/Pickup Ammo (+5)")]
+    private void TestPickupAmmo() => ammo.Add(5);
+
+    [ContextMenu("Test/Pickup Battery (+20)")]
+    private void TestPickupBattery() => battery.Add(20f);
 
     private void Play(AudioClip clip, float volume, float pitch)
     {
