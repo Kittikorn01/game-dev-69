@@ -39,10 +39,20 @@ public class Generator : MonoBehaviour
     {
         if (runningVisual != null) runningVisual.SetActive(false);
         RefreshVisuals();
+
+        // Start, not OnEnable: GameManager.Instance is only set after every Awake
+        if (GameManager.Instance != null) GameManager.Instance.RegisterGenerator();
+        else Debug.LogWarning($"[Generator] No GameManager in scene: {name}");
     }
 
     private void OnEnable()
     {
+        if (interactAction == null)
+        {
+            Debug.LogError($"[Generator] Interact Action not set: {name}");
+            enabled = false;
+            return;
+        }
         interactAction.action.Enable();
     }
 
@@ -83,6 +93,7 @@ public class Generator : MonoBehaviour
         }
 
         Debug.Log($"Generator ON: {name}");
+        if (GameManager.Instance != null) GameManager.Instance.ActivateGenerator();
         Activated?.Invoke(this);
         RefreshVisuals();
     }
