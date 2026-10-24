@@ -1,25 +1,24 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerAim : MonoBehaviour
 {
     [SerializeField] private PlayerInputReader inputReader;
     [SerializeField] private Camera targetCamera;
-    // sprite art faces up by default; change to 0 if the art faces right
+    [SerializeField] private Transform aimPivot;
+    // pivot children face up by default; change to 0 if they face right
     [SerializeField] private float spriteAngleOffset = -90f;
 
-    private Rigidbody2D body;
+    public Vector2 AimDirection { get; private set; } = Vector2.right;
 
-    private void Awake()
-    {
-        body = GetComponent<Rigidbody2D>();
-    }
-
-    private void FixedUpdate()
+    // Update, not FixedUpdate: the pivot is a plain transform, so rotate it every rendered frame
+    private void Update()
     {
         Vector2 mouseWorld = targetCamera.ScreenToWorldPoint(inputReader.PointerScreenPosition);
-        Vector2 direction = mouseWorld - body.position;
+        Vector2 direction = mouseWorld - (Vector2)aimPivot.position;
+        if (direction.sqrMagnitude < 0.0001f) return;
+
+        AimDirection = direction.normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        body.MoveRotation(angle + spriteAngleOffset);
+        aimPivot.rotation = Quaternion.Euler(0f, 0f, angle + spriteAngleOffset);
     }
 }
