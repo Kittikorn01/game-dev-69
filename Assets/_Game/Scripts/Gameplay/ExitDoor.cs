@@ -1,52 +1,41 @@
 using UnityEngine;
 
-// Shows the "next level" message when the player is near the door,
-// but only after every generator in the list is turned on.
-// Needs a Collider2D with "Is Trigger" checked on the same GameObject.
+// Blocks the player while locked, then loads the next level when the player
+// touches the door after GameManager reports every generator is turned on.
+// Needs two Collider2D: a solid one set as "Blocker", and a slightly larger
+// one with "Is Trigger" checked to detect the player.
 public class ExitDoor : MonoBehaviour
 {
-    [SerializeField] private Generator[] requiredGenerators;
-    // e.g. a world-space text "Next Level", hidden until the door is ready
-    [SerializeField] private GameObject nextLevelMessage;
+    // solid collider, disabled once the door unlocks
+    [SerializeField] private Collider2D blocker;
     // optional: shown/hidden when the door unlocks, e.g. an open-door sprite
     [SerializeField] private GameObject unlockedVisual;
 
     private int playerColliders;
-    private bool isShowing;
-
-    public bool IsUnlocked
-    {
-        get
-        {
-            foreach (Generator generator in requiredGenerators)
-            {
-                if (generator == null || !generator.IsActivated) return false;
-            }
-            return true;
-        }
-    }
+    private bool exitRequested;
 
     private void Start()
     {
-        if (nextLevelMessage != null) nextLevelMessage.SetActive(false);
         if (unlockedVisual != null) unlockedVisual.SetActive(false);
+        if (blocker == null) Debug.LogWarning($"[ExitDoor] Blocker not set, door can be walked through: {name}");
+        if (GameManager.Instance == null) Debug.LogWarning($"[ExitDoor] No GameManager in scene: {name}");
     }
 
+    // polled instead of using AllGeneratorsActivated: generators register in Start,
+    // so the count is only final from the first Update
     private void Update()
     {
-        bool unlocked = IsUnlocked;
+        bool unlocked = GameManager.Instance != null && GameManager.Instance.AllGeneratorsOn;
 
-        if (unlockedVisual != null && unlockedVisual.activeSelf != unlocked)
+        if (blocker != null && blocker.enabled == unlocked) blocker.enabled = !unlocked;
+        if (unlockedVisual != null && unlockedVisual.activeSelf != unlocked) unlockedVisual.SetActive(unlocked);
+
+        // also covers a player already standing at the door when it unlocks
+        if (unlocked && playerColliders > 0 && !exitRequested)
         {
-            unlockedVisual.SetActive(unlocked);
+            exitRequested = true;
+            GameManager.Instance.PlayerReachedExit();
         }
-
-        bool show = unlocked && playerColliders > 0;
-        if (show == isShowing) return;
-        isShowing = show;
-
-        if (nextLevelMessage != null) nextLevelMessage.SetActive(show);
-        if (show) Debug.Log("Exit door: next level");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
