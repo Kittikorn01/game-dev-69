@@ -45,7 +45,8 @@ public class DamageFlash : MonoBehaviour
     private IEnumerator Flash()
     {
         target.color = flashColor;
-        yield return new WaitForSeconds(duration);
+        // Realtime so the flash still ends while the game is paused on death
+        yield return new WaitForSecondsRealtime(duration);
         target.color = originalColor;
         flashRoutine = null;
     }
