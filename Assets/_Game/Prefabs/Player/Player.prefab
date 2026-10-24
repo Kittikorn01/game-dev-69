@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6789046722883287160}
   - component: {fileID: 5071961732863141435}
+  - component: {fileID: 7204156655195322435}
   m_Layer: 6
   m_Name: Flashlight
   m_TagString: Untagged
@@ -290,6 +291,24 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &7204156655195322435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4253266046311845619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eeb86bedebb3214589e21eb3ab0ba2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashlightDetector
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &5633670010938090283
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +326,8 @@ GameObject:
   - component: {fileID: 7746062763434116984}
   - component: {fileID: 3038152917177994119}
   - component: {fileID: 6739161299235456028}
+  - component: {fileID: 8217011181815588477}
+  - component: {fileID: 4487338465989782853}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -418,7 +439,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &2922212852769804823
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -497,7 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
   inputReader: {fileID: 6903091261374229689}
-  targetCamera: {fileID: 3603005349777668038, guid: 7d8df6e0efba24049a61b372119a2095, type: 3}
+  targetCamera: {fileID: 0}
   spriteAngleOffset: -90
 --- !u!114 &3038152917177994119
 MonoBehaviour:
@@ -512,6 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
   inputReader: {fileID: 6903091261374229689}
+  ammo: {fileID: 8217011181815588477}
   bulletPrefab: {fileID: 4840732234404529648, guid: 373c61d6e027ece4e8910ca8a3487497, type: 3}
   firePoint: {fileID: 3232791256920679082}
   fireCooldown: 0.2
@@ -528,6 +550,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFlashlight
   inputReader: {fileID: 6903091261374229689}
+  battery: {fileID: 4487338465989782853}
   flashlight: {fileID: 5071961732863141435}
   ambientLight: {fileID: 6298338444204178144}
   ambientDimMultiplier: 0.3
+--- !u!114 &8217011181815588477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633670010938090283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b2e1cedfbec67498e90eee7648e753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAmmo
+  startAmmo: 20
+--- !u!114 &4487338465989782853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633670010938090283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2318078e054614e4e98e3b8e6e77a6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBattery
+  maxBattery: 100
+  drainPerSecond: 5
