@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 1801912991587883566}
   - component: {fileID: 3201465000707252617}
   - component: {fileID: 6081879293264825590}
+  - component: {fileID: 4387914324410682138}
+  - component: {fileID: 5805635189101424648}
+  - component: {fileID: 3763413050044201227}
   m_Layer: 8
   m_Name: Enemy_Base
   m_TagString: Untagged
@@ -117,7 +120,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -181,6 +184,55 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4387914324410682138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694406676696903310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79ebdc16094ea841bfb6347dfa93f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySight
+  sightRange: 8
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1
+--- !u!114 &5805635189101424648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694406676696903310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b26ea0a1ba15e429ee52cf21331615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWander
+  changeDirectionInterval: 3
+  stuckTime: 1
+  stuckDistance: 0.1
+  detourTime: 1
+--- !u!114 &3763413050044201227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694406676696903310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5f6abecfe0e48429f63ed99c4dd60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySeparation
+  radius: 1.2
+  strength: 2
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &7895100216830149344
 GameObject:
   m_ObjectHideFlags: 0
