@@ -18,7 +18,19 @@ public class Health : MonoBehaviour, IDamageable
         currentHp = maxHp;
     }
 
-    public void TakeDamage(int amount)
+    // Ordinary damage (bullets, attacks); subclasses may block it
+    public virtual void TakeDamage(int amount)
+    {
+        ApplyDamage(amount);
+    }
+
+    // Flashlight damage; not virtual so light always gets through
+    public void TakeLightDamage(int amount)
+    {
+        ApplyDamage(amount);
+    }
+
+    protected void ApplyDamage(int amount)
     {
         // Ignore hits after death so Died fires only once
         if (amount <= 0 || currentHp <= 0) return;
