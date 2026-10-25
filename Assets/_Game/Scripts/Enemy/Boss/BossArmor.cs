@@ -21,6 +21,8 @@ public class BossArmor : MonoBehaviour, ILightReactive
     public bool IsArmored => isArmored;
     public bool IsLit => isLit;
     public float LightProgress01 => lightProgress / lightTimeToBreak;
+    // 0 right after breaking, 1 when the armor is back
+    public float RegenProgress01 => 1f - regenTimer / armorRegenTime;
 
     private void Update()
     {
