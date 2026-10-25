@@ -646,6 +646,7 @@ MonoBehaviour:
   - {fileID: 5788157384139355662}
   hideOnDeath:
   - {fileID: 5947953875474207005}
+  - {fileID: 4253266046311845619}
 --- !u!1 &5947953875474207005
 GameObject:
   m_ObjectHideFlags: 0

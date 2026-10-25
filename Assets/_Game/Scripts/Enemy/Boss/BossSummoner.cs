@@ -22,6 +22,9 @@ public class BossSummoner : MonoBehaviour
     private readonly List<EnemySpawnPoint> candidates = new List<EnemySpawnPoint>();
     private float timer;
 
+    // full name: importing System would make Random ambiguous
+    public event System.Action Summoned;
+
     private bool IsPhaseTwo => health.CurrentHp <= health.MaxHp * phaseTwoHpRatio;
 
     private void Awake()
@@ -33,6 +36,16 @@ public class BossSummoner : MonoBehaviour
 
         if (flashlight == null) flashlight = FindFirstObjectByType<FlashlightDetector>();
         if (flashlight == null) Debug.LogWarning($"[BossSummoner] No FlashlightDetector in scene, summoning ignores light: {name}", this);
+    }
+
+    private void OnEnable()
+    {
+        health.Died += KillAllMinions;
+    }
+
+    private void OnDisable()
+    {
+        health.Died -= KillAllMinions;
     }
 
     private void Update()
@@ -67,6 +80,19 @@ public class BossSummoner : MonoBehaviour
         EnemySpawnPoint chosen = candidates[Random.Range(0, candidates.Count)];
         EnemyBase minion = Instantiate(prefab, chosen.Position, Quaternion.identity);
         aliveMinions.Add(minion.gameObject);
+        Summoned?.Invoke();
+    }
+
+    // Light damage so armor-like Health subclasses can't block it and each minion plays its own death
+    private void KillAllMinions()
+    {
+        foreach (GameObject minion in aliveMinions)
+        {
+            if (minion == null) continue;
+            Health minionHealth = minion.GetComponent<Health>();
+            if (minionHealth != null) minionHealth.TakeLightDamage(minionHealth.CurrentHp);
+        }
+        aliveMinions.Clear();
     }
 
     private static EnemyBase PickEnemy(WeightedEnemy[] pool)

@@ -111,137 +111,172 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Zombie_Boss_Side_Death-Sheet7_0
+      name: SuperBoss_right_Death_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 26
-        height: 31
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 258c1544eed125e40800000000000000
-      internalID: 5643606192234285138
+      spriteID: 154e159166005c94fa79eccadb0668fd
+      internalID: 10170605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_Boss_Side_Death-Sheet7_1
+      name: SuperBoss_right_Death_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 26
-        height: 29
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2941771f054b764e0800000000000000
-      internalID: -1988422450719288174
+      spriteID: a28f8512a3fbc5742a39208070b16440
+      internalID: 136099285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_Boss_Side_Death-Sheet7_2
+      name: SuperBoss_right_Death_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 26
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1346272c65e8f0c30800000000000000
-      internalID: 4327834270206944305
+      spriteID: eaf35caf6c7915b468aa7cde46192f54
+      internalID: -2036987078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_Boss_Side_Death-Sheet7_3
+      name: SuperBoss_right_Death_3
       rect:
         serializedVersion: 2
-        x: 95
+        x: 96
         y: 0
-        width: 27
-        height: 27
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b28c7be54c598d790800000000000000
-      internalID: -7505084108377700309
+      spriteID: 63c4c7f0e05dae84e877c8a40abac45b
+      internalID: 1079369670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_Boss_Side_Death-Sheet7_4
+      name: SuperBoss_right_Death_4
       rect:
         serializedVersion: 2
-        x: 127
+        x: 128
         y: 0
-        width: 66
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 45db65f9316431010800000000000000
-      internalID: 1158346579255934292
+      spriteID: 5a208e757c99196438920c264f29615c
+      internalID: 629224189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_Boss_Side_Death-Sheet7_5
+      name: SuperBoss_right_Death_5
       rect:
         serializedVersion: 2
-        x: 191
+        x: 160
         y: 0
-        width: 33
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d3842fdcc0c578630800000000000000
-      internalID: 3929210409968617533
+      spriteID: 0bfb7542fe7eacb45ab8b5c467a3e65d
+      internalID: 222652232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SuperBoss_right_Death_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e65b743c94c7c5842895892ce47936d7
+      internalID: -1279807021
       vertices: []
       indices: 
       edges: []
@@ -250,7 +285,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b5911275e4fa6e34ea62bcc6731c69ab
     internalID: 0
     vertices: []
     indices: 
@@ -260,12 +295,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Zombie_Boss_Side_Death-Sheet7_0: 5643606192234285138
-      Zombie_Boss_Side_Death-Sheet7_1: -1988422450719288174
-      Zombie_Boss_Side_Death-Sheet7_2: 4327834270206944305
-      Zombie_Boss_Side_Death-Sheet7_3: -7505084108377700309
-      Zombie_Boss_Side_Death-Sheet7_4: 1158346579255934292
-      Zombie_Boss_Side_Death-Sheet7_5: 3929210409968617533
+      SuperBoss_right_Death_0: 10170605
+      SuperBoss_right_Death_1: 136099285
+      SuperBoss_right_Death_2: -2036987078
+      SuperBoss_right_Death_3: 1079369670
+      SuperBoss_right_Death_4: 629224189
+      SuperBoss_right_Death_5: 222652232
+      SuperBoss_right_Death_6: -1279807021
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

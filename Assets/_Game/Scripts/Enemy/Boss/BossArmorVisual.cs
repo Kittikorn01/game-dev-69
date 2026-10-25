@@ -6,6 +6,8 @@ using UnityEngine;
 public class BossArmorVisual : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer armorOverlay;
+    // the overlay copies this renderer's sprite so the armor follows the animated body shape
+    [SerializeField] private SpriteRenderer body;
     [SerializeField] private Color blockedFlashColor = Color.white;
     [SerializeField, Min(0.01f)] private float blockedFlashDuration = 0.1f;
     [SerializeField] private Color litBlinkColor = Color.cyan;
@@ -39,9 +41,11 @@ public class BossArmorVisual : MonoBehaviour
         health.DamageBlocked -= HandleDamageBlocked;
     }
 
-    private void Update()
+    // LateUpdate so the body's Animator has already set this frame's sprite
+    private void LateUpdate()
     {
         if (armorOverlay == null || !armor.IsArmored) return;
+        if (body != null) armorOverlay.sprite = body.sprite;
         armorOverlay.color = GetCurrentColor();
     }
 
