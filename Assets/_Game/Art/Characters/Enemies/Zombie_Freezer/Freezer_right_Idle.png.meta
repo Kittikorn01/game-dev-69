@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 543fa5596f96e4611bf0c74b8b51904c
+guid: 51f11351a0bf748c2be5ede52a2a8367
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6112212084178434163
-    second: Zombie_Small_Side_Idle-Sheet6_0
+      213: -4846496889846867266
+    second: Zombie_Axe_Side_Idle-Sheet6_0
+  - first:
+      213: 1852166539617421121
+    second: Zombie_Axe_Side_Idle-Sheet6_1
+  - first:
+      213: -1711733426045154104
+    second: Zombie_Axe_Side_Idle-Sheet6_2
+  - first:
+      213: 525902529002334717
+    second: Zombie_Axe_Side_Idle-Sheet6_3
+  - first:
+      213: -5458627368786767348
+    second: Zombie_Axe_Side_Idle-Sheet6_4
+  - first:
+      213: -3513740608513641742
+    second: Zombie_Axe_Side_Idle-Sheet6_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,133 +115,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shade_right_Idle_0
+      name: Zombie_Axe_Side_Idle-Sheet6_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 11
-        height: 15
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b72bcf42c41474ecebf2f11a7b45bf88
-      internalID: 2076911714
+      spriteID: eba54aba1c8cdbcb0800000000000000
+      internalID: -4846496889846867266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shade_right_Idle_1
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 0
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07f17c304e79741b18aa304eca9faf1c
-      internalID: 229586221
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shade_right_Idle_2
+      name: Zombie_Axe_Side_Idle-Sheet6_1
       rect:
         serializedVersion: 2
         x: 22
         y: 0
-        width: 11
-        height: 15
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c37e47274c6df4fd1ac30f5032ff5824
-      internalID: 1097685846
+      spriteID: 147c2c297a734b910800000000000000
+      internalID: 1852166539617421121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shade_right_Idle_3
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 0
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b5ebf06211cc4eaca2878b50595064f
-      internalID: 1440038086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shade_right_Idle_4
+      name: Zombie_Axe_Side_Idle-Sheet6_2
       rect:
         serializedVersion: 2
         x: 44
         y: 0
-        width: 11
-        height: 15
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0ce288c5223034554bae0bbb9e025b64
-      internalID: -598122593
+      spriteID: 8cc8a66a483be38e0800000000000000
+      internalID: -1711733426045154104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shade_right_Idle_5
+      name: Zombie_Axe_Side_Idle-Sheet6_3
       rect:
         serializedVersion: 2
-        x: 55
+        x: 66
         y: 0
-        width: 11
-        height: 15
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9283b5c10880346b39113ec0ba839efe
-      internalID: -1591245391
+      spriteID: df9e9a350916c4700800000000000000
+      internalID: 525902529002334717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Axe_Side_Idle-Sheet6_4
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 0
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c025d32445f0f34b0800000000000000
+      internalID: -5458627368786767348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_Axe_Side_Idle-Sheet6_5
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f2fdac788fac3fc0800000000000000
+      internalID: -3513740608513641742
       vertices: []
       indices: 
       edges: []
@@ -235,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 80c13f4c752164908b0aacd9655bf9ec
+    spriteID: df414f10f7498490ab2e830aa8e1b707
     internalID: 0
     vertices: []
     indices: 
@@ -245,14 +260,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":11.0,"y":15.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":22.0,"y":18.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Shade_right_Idle_0: 2076911714
-      Shade_right_Idle_1: 229586221
-      Shade_right_Idle_2: 1097685846
-      Shade_right_Idle_3: 1440038086
-      Shade_right_Idle_4: -598122593
-      Shade_right_Idle_5: -1591245391
+      Zombie_Axe_Side_Idle-Sheet6_0: -4846496889846867266
+      Zombie_Axe_Side_Idle-Sheet6_1: 1852166539617421121
+      Zombie_Axe_Side_Idle-Sheet6_2: -1711733426045154104
+      Zombie_Axe_Side_Idle-Sheet6_3: 525902529002334717
+      Zombie_Axe_Side_Idle-Sheet6_4: -5458627368786767348
+      Zombie_Axe_Side_Idle-Sheet6_5: -3513740608513641742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
