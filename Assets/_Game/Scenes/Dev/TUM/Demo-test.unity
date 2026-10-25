@@ -885,11 +885,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4410660366108223198, guid: 0d15a74ec651bee4897b49c7093da3ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.58
+      value: 10.01
       objectReference: {fileID: 0}
     - target: {fileID: 4410660366108223198, guid: 0d15a74ec651bee4897b49c7093da3ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.75
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 8054348703733019937, guid: 0d15a74ec651bee4897b49c7093da3ac, type: 3}
       propertyPath: flashlight

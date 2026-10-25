@@ -58,7 +58,7 @@ public abstract class EnemyBase : MonoBehaviour
             return;
         }
 
-        body.linearVelocity = Vector2.zero;
+        body.linearVelocity = GetInRangeVelocity();
         if (Time.time >= nextAttackTime)
         {
             nextAttackTime = Time.time + attackCooldown;
@@ -68,6 +68,12 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected abstract void Move();
     protected abstract void Attack();
+
+    // Velocity while standing in attack range; enemies stand still unless overridden
+    protected virtual Vector2 GetInRangeVelocity()
+    {
+        return Vector2.zero;
+    }
 
     protected virtual void OnDied()
     {
