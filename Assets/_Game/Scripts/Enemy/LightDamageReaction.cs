@@ -20,7 +20,7 @@ public class LightDamageReaction : MonoBehaviour, ILightReactive
         if (!isLit || Time.time < nextTickTime) return;
 
         nextTickTime = Time.time + tickInterval;
-        health.TakeDamage(damagePerTick);
+        health.TakeLightDamage(damagePerTick);
         Debug.Log($"{name} takes {damagePerTick} light damage (HP {health.CurrentHp})");
     }
 
