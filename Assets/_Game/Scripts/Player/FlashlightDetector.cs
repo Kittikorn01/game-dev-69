@@ -53,23 +53,38 @@ public class FlashlightDetector : MonoBehaviour
         litTargets.Clear();
     }
 
+    // true if the beam is on and reaches the point, e.g. so spawners avoid lit spots
+    public bool IsPointLit(Vector2 point)
+    {
+        if (!beam.enabled) return false;
+
+        float radius = beam.pointLightOuterRadius;
+        if ((point - (Vector2)transform.position).sqrMagnitude > radius * radius) return false;
+        return IsInBeam(point);
+    }
+
     // Point Light2D shines along local up, spread over pointLightOuterAngle
     private void CollectHits()
     {
         Vector2 origin = transform.position;
-        float halfAngle = beam.pointLightOuterAngle * 0.5f;
 
         foreach (Collider2D hit in Physics2D.OverlapCircleAll(origin, beam.pointLightOuterRadius, targetMask))
         {
-            Vector2 targetPoint = hit.bounds.center;
-            if (Vector2.Angle(transform.up, targetPoint - origin) > halfAngle) continue;
-            if (Physics2D.Linecast(origin, targetPoint, obstacleMask)) continue;
+            if (!IsInBeam(hit.bounds.center)) continue;
 
             foreach (ILightReactive target in hit.GetComponentsInParent<ILightReactive>())
             {
                 currentHits.Add(target);
             }
         }
+    }
+
+    // Angle and wall check only: CollectHits already limits range by collider overlap
+    private bool IsInBeam(Vector2 point)
+    {
+        Vector2 origin = transform.position;
+        if (Vector2.Angle(transform.up, point - origin) > beam.pointLightOuterAngle * 0.5f) return false;
+        return !Physics2D.Linecast(origin, point, obstacleMask);
     }
 
     // Targets destroyed while lit stay in the set until the next step
