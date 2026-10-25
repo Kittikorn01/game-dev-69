@@ -12,6 +12,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chaser
       objectReference: {fileID: 0}
+    - target: {fileID: 4095723337286067942, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1260615829, guid: 0267915b39f6a4cf684b69a70ba5775a, type: 3}
+    - target: {fileID: 4095723337286067942, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095723337286067942, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081879293264825590, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081879293264825590, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081879293264825590, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.8125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081879293264825590, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.9375
+      objectReference: {fileID: 0}
     - target: {fileID: 7103386578714664274, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.172306
@@ -54,19 +82,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8075673931598188281, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Size.x
-      value: 1.0069146
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8075673931598188281, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Size.y
-      value: 1.0012822
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 8075673931598188281, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Offset.x
-      value: -0.0014078617
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8075673931598188281, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Offset.y
-      value: -0.0058238804
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -78,6 +106,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2694406676696903310, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6648438768378958148}
+    - targetCorrespondingSourceObject: {fileID: 2694406676696903310, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5223599195615420656}
+    - targetCorrespondingSourceObject: {fileID: 2694406676696903310, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473139990705515434}
   m_SourcePrefab: {fileID: 100100000, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
 --- !u!1 &6392448965866793088 stripped
 GameObject:
@@ -100,6 +134,7 @@ MonoBehaviour:
   damage: 1
   attackRange: 2
   attackCooldown: 1
+  deathDelay: 0.5
   target: {fileID: 0}
 --- !u!114 &6648438768378958148
 MonoBehaviour:
@@ -114,5 +149,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
   target: {fileID: 0}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashColor: {r: 1, g: 0.54905653, b: 0.54905653, a: 1}
+  healColor: {r: 0, g: 1, b: 0, a: 1}
   duration: 0.1
+--- !u!95 &5223599195615420656
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392448965866793088}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8bc27c5bad841854d9239fd7ef3deb7f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1473139990705515434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392448965866793088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfde7af4114fcb47a41d58c4cd48b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBodyAnimator
+  attackDuration: 0.33
+  turnSpeedThreshold: 0.1

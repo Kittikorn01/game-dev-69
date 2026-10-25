@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Health))]
@@ -7,6 +8,10 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected int damage = 1;
     [SerializeField] protected float attackRange = 1f;
     [SerializeField] protected float attackCooldown = 1f;
+    [Tooltip("Seconds the body stays after death so a death animation can play. 0 = destroy at once.")]
+    [SerializeField, Min(0f)] protected float deathDelay = 0f;
+
+    public event Action Attacked;
 
     protected Transform player;
     protected Rigidbody2D body;
@@ -63,6 +68,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             nextAttackTime = Time.time + attackCooldown;
             Attack();
+            Attacked?.Invoke();
         }
     }
 
@@ -77,6 +83,10 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void OnDied()
     {
-        Destroy(gameObject);
+        // Stop moving, attacking and being hit while the corpse stays for the death animation
+        enabled = false;
+        body.linearVelocity = Vector2.zero;
+        body.simulated = false;
+        Destroy(gameObject, deathDelay);
     }
 }
