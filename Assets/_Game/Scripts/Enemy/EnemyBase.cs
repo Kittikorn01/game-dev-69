@@ -13,6 +13,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     public event Action Attacked;
 
+    public float AttackCooldown => attackCooldown;
+
     protected Transform player;
     protected Rigidbody2D body;
     protected Health health;
