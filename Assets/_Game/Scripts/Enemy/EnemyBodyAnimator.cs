@@ -1,11 +1,10 @@
+using System.Linq;
 using UnityEngine;
 
 // Plays Idle / Walk / Attack / Death facing left or right, like PlayerBodyAnimator.
 [RequireComponent(typeof(Animator), typeof(EnemyBase))]
 public class EnemyBodyAnimator : MonoBehaviour
 {
-    [Tooltip("Length of the attack clip; Walk resumes after it")]
-    [SerializeField, Min(0f)] private float attackDuration = 0.33f;
     [Tooltip("Horizontal speed needed to turn around, so separation jitter doesn't flip the sprite")]
     [SerializeField, Min(0f)] private float turnSpeedThreshold = 0.1f;
     [Tooltip("Speed needed to play Walk instead of Idle")]
@@ -19,6 +18,7 @@ public class EnemyBodyAnimator : MonoBehaviour
     private bool facingLeft;
     private bool isDead;
     private float attackEndTime;
+    private float attackClipLength;
 
     private void Awake()
     {
@@ -26,6 +26,13 @@ public class EnemyBodyAnimator : MonoBehaviour
         enemy = GetComponent<EnemyBase>();
         body = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
+
+        // shortcut: finds the attack clip by name, switch to a serialized clip if a name lacks "Attack"
+        attackClipLength = animator.runtimeAnimatorController.animationClips
+            .Where(clip => clip.name.Contains("Attack"))
+            .Select(clip => clip.length)
+            .DefaultIfEmpty(0f)
+            .Max();
     }
 
     private void OnEnable()
@@ -47,13 +54,22 @@ public class EnemyBodyAnimator : MonoBehaviour
         Vector2 velocity = body.linearVelocity;
         if (Mathf.Abs(velocity.x) > turnSpeedThreshold) facingLeft = velocity.x < 0f;
 
-        if (Time.time < attackEndTime) PlayState("Attack");
-        else PlayState(velocity.sqrMagnitude > moveSpeedThreshold * moveSpeedThreshold ? "Walk" : "Idle");
+        if (Time.time < attackEndTime)
+        {
+            PlayState("Attack");
+            return;
+        }
+
+        animator.speed = 1f;
+        PlayState(velocity.sqrMagnitude > moveSpeedThreshold * moveSpeedThreshold ? "Walk" : "Idle");
     }
 
     private void OnAttacked()
     {
-        attackEndTime = Time.time + attackDuration;
+        // Speed the swing up when it is longer than the cooldown, so it always finishes before the next one
+        float duration = Mathf.Min(attackClipLength, enemy.AttackCooldown);
+        animator.speed = duration > 0f ? attackClipLength / duration : 1f;
+        attackEndTime = Time.time + duration;
         // restart the swing even if the previous one is still playing
         currentState = null;
     }
@@ -61,6 +77,7 @@ public class EnemyBodyAnimator : MonoBehaviour
     private void OnDied()
     {
         isDead = true;
+        animator.speed = 1f;
         PlayState("Death");
     }
 
