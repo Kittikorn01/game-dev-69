@@ -27,4 +27,13 @@ public class Health : MonoBehaviour, IDamageable
         HealthChanged?.Invoke(currentHp, maxHp);
         if (currentHp == 0) Died?.Invoke();
     }
+
+    public void Heal(int amount)
+    {
+        // Dead stay dead; full HP is a no-op so listeners never see a fake change
+        if (amount <= 0 || currentHp <= 0 || currentHp >= maxHp) return;
+
+        currentHp = Mathf.Min(currentHp + amount, maxHp);
+        HealthChanged?.Invoke(currentHp, maxHp);
+    }
 }
