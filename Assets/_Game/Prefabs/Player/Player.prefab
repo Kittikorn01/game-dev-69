@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBattery
   maxBattery: 100
-  drainPerSecond: 5
+  drainPerSecond: 1
 --- !u!114 &7344549980238050773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
   target: {fileID: 4774135451595683932}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
+  healColor: {r: 0, g: 1, b: 0, a: 1}
   duration: 0.1
 --- !u!114 &6365428102496456988
 MonoBehaviour:

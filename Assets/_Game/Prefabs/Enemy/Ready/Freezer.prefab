@@ -13,16 +13,32 @@ PrefabInstance:
       value: Freezer
       objectReference: {fileID: 0}
     - target: {fileID: 4095723337286067942, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4424156391572319394, guid: e3e380404d1dd4dab894a41e75251b16, type: 3}
+    - target: {fileID: 4095723337286067942, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Color.b
-      value: 0.2396226
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4095723337286067942, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Color.g
-      value: 0.88750196
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4095723337286067942, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081879293264825590, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081879293264825590, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081879293264825590, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.1875
       objectReference: {fileID: 0}
     - target: {fileID: 7103386578714664274, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64,6 +80,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8075673931598188281, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075673931598188281, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77,6 +101,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2694406676696903310, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4954978247456391802}
+    - targetCorrespondingSourceObject: {fileID: 2694406676696903310, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7072816906446361203}
+    - targetCorrespondingSourceObject: {fileID: 2694406676696903310, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856730544629371078}
   m_SourcePrefab: {fileID: 100100000, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
 --- !u!1 &5852470263441365207 stripped
 GameObject:
@@ -99,6 +129,7 @@ MonoBehaviour:
   damage: 1
   attackRange: 1
   attackCooldown: 1
+  deathDelay: 0.5
   target: {fileID: 0}
 --- !u!114 &7887386832247156335
 MonoBehaviour:
@@ -126,4 +157,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
   target: {fileID: 0}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
+  healColor: {r: 0, g: 1, b: 0, a: 1}
   duration: 0.1
+--- !u!95 &7072816906446361203
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852470263441365207}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33ebaccf7aa4349409ce61ba80b8cc15, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1856730544629371078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852470263441365207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfde7af4114fcb47a41d58c4cd48b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBodyAnimator
+  turnSpeedThreshold: 0.1
+  moveSpeedThreshold: 0.1
