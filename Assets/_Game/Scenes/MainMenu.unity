@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8170b607f4744d8afa8994d8cfca22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  firstLevelScene: Level1
+  firstLevelScene: Intro
   mainPanel: {fileID: 787361305}
   creditsPanel: {fileID: 469099437}
 --- !u!4 &2037472018
