@@ -1,20 +1,41 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 public class PlayerGunVisual : MonoBehaviour
 {
-    [SerializeField] private PlayerAim aim;
+    private static readonly int ShootHash = Animator.StringToHash("Shoot");
 
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private PlayerAim aim;
+    [SerializeField] private PlayerShooter shooter;
+
+    private Animator animator;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        shooter.Fired += PlayShoot;
+    }
+
+    private void OnDisable()
+    {
+        shooter.Fired -= PlayShoot;
     }
 
     private void LateUpdate()
     {
-        // Gun art faces right, so flip it when aiming left or it renders upside down
-        spriteRenderer.flipY = aim.AimDirection.x < 0f;
+        // Gun art faces right, so mirror it when aiming left or it renders upside down.
+        // Scale (not flipY) so the muzzle children (FirePoint, flash) mirror with it
+        Vector3 scale = transform.localScale;
+        scale.y = aim.AimDirection.x < 0f ? -1f : 1f;
+        transform.localScale = scale;
+    }
+
+    private void PlayShoot()
+    {
+        animator.SetTrigger(ShootHash);
     }
 }
