@@ -11,6 +11,11 @@ public class Generator : MonoBehaviour
     // true = progress goes back to 0 when E is released or the player walks away
     [SerializeField] private bool resetWhenReleased = false;
 
+    [Header("Sprites (optional)")]
+    [SerializeField] private SpriteRenderer body;
+    [SerializeField] private Sprite offSprite;
+    [SerializeField] private Sprite onSprite;
+
     [Header("Visuals (optional)")]
     // shown while the player is in range and the generator is still off, e.g. "Hold E"
     [SerializeField] private GameObject prompt;
@@ -28,6 +33,8 @@ public class Generator : MonoBehaviour
     public event Action<Generator> Activated;
 
     public bool IsActivated { get; private set; }
+    // true while the player is in range and holding Interact
+    public bool IsHolding { get; private set; }
     public float Progress => Mathf.Clamp01(holdTime / holdDuration);
 
     private float holdTime;
@@ -38,6 +45,7 @@ public class Generator : MonoBehaviour
     private void Start()
     {
         if (runningVisual != null) runningVisual.SetActive(false);
+        SetBodySprite(offSprite);
         RefreshVisuals();
 
         // Start, not OnEnable: GameManager.Instance is only set after every Awake
@@ -61,6 +69,7 @@ public class Generator : MonoBehaviour
         if (IsActivated) return;
 
         bool holding = PlayerInRange && interactAction.action.IsPressed();
+        IsHolding = holding;
         if (holding)
         {
             holdTime += Time.deltaTime;
@@ -77,9 +86,12 @@ public class Generator : MonoBehaviour
     private void Activate()
     {
         IsActivated = true;
+        // Update returns early once activated, so clear it here
+        IsHolding = false;
         holdTime = holdDuration;
 
         if (runningVisual != null) runningVisual.SetActive(true);
+        SetBodySprite(onSprite);
 
         if (audioSource != null)
         {
@@ -96,6 +108,11 @@ public class Generator : MonoBehaviour
         if (GameManager.Instance != null) GameManager.Instance.ActivateGenerator();
         Activated?.Invoke(this);
         RefreshVisuals();
+    }
+
+    private void SetBodySprite(Sprite sprite)
+    {
+        if (body != null && sprite != null) body.sprite = sprite;
     }
 
     private void RefreshVisuals()
