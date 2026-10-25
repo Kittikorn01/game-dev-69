@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4387914324410682138}
   - component: {fileID: 5805635189101424648}
   - component: {fileID: 3763413050044201227}
+  - component: {fileID: 7375287228605329726}
   m_Layer: 8
   m_Name: Enemy_Base
   m_TagString: Untagged
@@ -233,6 +234,23 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &7375287228605329726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694406676696903310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012fb38dff71f9f4eb75e27d654394c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLootDrop
+  entries:
+  - prefab: {fileID: 4379813945744162336, guid: 596b93f02d2ed1b45a073ce9ed9672c5, type: 3}
+    chance: 30
+  - prefab: {fileID: 4379813945744162336, guid: a36a0c961c281ba4eb863bd3858c6ddc, type: 3}
+    chance: 15
 --- !u!1 &7895100216830149344
 GameObject:
   m_ObjectHideFlags: 0
