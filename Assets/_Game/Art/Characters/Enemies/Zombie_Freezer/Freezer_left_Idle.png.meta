@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 9ce89a9a8fd8a4e778266bd223fdfa8c
+guid: 0835dfe23b47840fc87bbf35dd01df2c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1173968622202151044
-    second: Zombie_Small_Side-left_Idle-Sheet6_0
+      213: -432570169271848598
+    second: Zombie_Axe_Side-left_Idle-Sheet6_0
+  - first:
+      213: -99552184398947406
+    second: Zombie_Axe_Side-left_Idle-Sheet6_1
+  - first:
+      213: 2711511055984471613
+    second: Zombie_Axe_Side-left_Idle-Sheet6_2
+  - first:
+      213: -508937335841921236
+    second: Zombie_Axe_Side-left_Idle-Sheet6_3
+  - first:
+      213: 1536545827213304040
+    second: Zombie_Axe_Side-left_Idle-Sheet6_4
+  - first:
+      213: -2054353712797499882
+    second: Zombie_Axe_Side-left_Idle-Sheet6_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shade_left_Idle_0
+      name: Freezer_left_Idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 11
-        height: 15
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,42 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35111c30559824cd995b032f3d4413b4
-      internalID: 181948372
+      spriteID: f8b4921cff3394a4489fcddc74f875ff
+      internalID: 1324599471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shade_left_Idle_1
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 0
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ad5f3e8e42b74e949cbc5dc3f43a577
-      internalID: 1285422328
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shade_left_Idle_2
+      name: Freezer_left_Idle_1
       rect:
         serializedVersion: 2
         x: 22
         y: 0
-        width: 11
-        height: 15
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,42 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9dcfe598cf5a4b40873b40788eae382
-      internalID: 1966706897
+      spriteID: c7549be0f8e2d47b2a362725b08c6b57
+      internalID: 338555786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shade_left_Idle_3
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 0
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d51995203e8144f6596e213f90f4712a
-      internalID: 1638104402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shade_left_Idle_4
+      name: Freezer_left_Idle_2
       rect:
         serializedVersion: 2
         x: 44
         y: 0
-        width: 11
-        height: 15
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0488b601aff604645a4f945d5ab07457
-      internalID: -1725479218
+      spriteID: c15b2ac8313f149dbbfb6cd2bb8d424c
+      internalID: -531136749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shade_left_Idle_5
+      name: Freezer_left_Idle_3
       rect:
         serializedVersion: 2
-        x: 55
+        x: 66
         y: 0
-        width: 11
-        height: 15
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,8 +196,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c82f3212ee6af4d4b9375f2213181de5
-      internalID: -512781780
+      spriteID: eb97594aa1d3f406788e181e595ebda5
+      internalID: -1502764134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freezer_left_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 0
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0563ea503d0cd4ea3bbde5f6afffdd00
+      internalID: 51656766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Freezer_left_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7e539a1a5674837929a7693f81467c
+      internalID: 1750055649
       vertices: []
       indices: 
       edges: []
@@ -235,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e7edae86cdf904adda7a5f7d36254310
+    spriteID: c1769f0edce8d45a0b7e8b0703ba57a3
     internalID: 0
     vertices: []
     indices: 
@@ -245,14 +260,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":11.0,"y":15.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":22.0,"y":18.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Shade_left_Idle_0: 181948372
-      Shade_left_Idle_1: 1285422328
-      Shade_left_Idle_2: 1966706897
-      Shade_left_Idle_3: 1638104402
-      Shade_left_Idle_4: -1725479218
-      Shade_left_Idle_5: -512781780
+      Freezer_left_Idle_0: 1324599471
+      Freezer_left_Idle_1: 338555786
+      Freezer_left_Idle_2: -531136749
+      Freezer_left_Idle_3: -1502764134
+      Freezer_left_Idle_4: 51656766
+      Freezer_left_Idle_5: 1750055649
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
