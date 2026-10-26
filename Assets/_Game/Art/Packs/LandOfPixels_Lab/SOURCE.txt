@@ -1,0 +1,8 @@
+Land of pixels - Laboratory tileset (16px) - by marceles
+https://marceles.itch.io/land-of-pixels-laboratory-tileset-pixel-art
+
+Free download (name your own price, $0). License: see LICENSE.txt - adapt / commercial use OK, no reselling.
+Credit appreciated: https://marceles.neocities.org/
+
+Changes: colours muted (saturation x0.5, value x0.78, purple tint) to match the PostApocalypse pack.
+Sliced on import: tiles 16x16 grid, tilesStuff by islands, sprite sheets by the frame size in the file name.
