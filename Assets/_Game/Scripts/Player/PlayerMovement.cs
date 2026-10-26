@@ -13,6 +13,12 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
+    private void OnDisable()
+    {
+        // Stop sliding when disabled on death
+        body.linearVelocity = Vector2.zero;
+    }
+
     private void FixedUpdate()
     {
         // ClampMagnitude stops diagonal movement from being faster
