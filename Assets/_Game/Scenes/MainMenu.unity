@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 114888247}
   - component: {fileID: 114888246}
   - component: {fileID: 114888245}
+  - component: {fileID: 114888249}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -222,6 +223,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &114888249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114888244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3c0bc1965364d01ad3b458771cdcd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickClip: {fileID: 8300000, guid: 0376a12e84ea94028b564a3ff3f05ee7, type: 3}
+  volume: 0.8
 --- !u!1 &116919915
 GameObject:
   m_ObjectHideFlags: 0
