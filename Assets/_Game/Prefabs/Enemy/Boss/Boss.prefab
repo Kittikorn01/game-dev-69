@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 470511101827928264}
   - component: {fileID: 7920597386939792362}
   - component: {fileID: 7742027086584656344}
+  - component: {fileID: 2391193941322027462}
   m_Layer: 8
   m_Name: Boss
   m_TagString: Untagged
@@ -726,6 +727,20 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: bb83698a1785a41a2935ce94ffe2b485, type: 3}
   volume: 0.9
   hitSoundCooldown: 0.08
+--- !u!114 &2391193941322027462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3090693975497141813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2012deed12a68f4418b71344c421fd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectSpawner
+  spawnEffectPrefab: {fileID: 272893415945068448, guid: f34d6cd8d3e349d47a21530a6d1d1037, type: 3}
+  spawnDelay: 0.33
 --- !u!1 &3584139182527065423
 GameObject:
   m_ObjectHideFlags: 0
