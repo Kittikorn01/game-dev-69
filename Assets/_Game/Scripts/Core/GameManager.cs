@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private Health playerHealth;
+    // found in the scene when empty; the next level loads right away if there is none
+    [SerializeField] private ScreenFader screenFader;
 
     private GameState state = GameState.Playing;
     private int totalGenerators;
@@ -29,6 +31,17 @@ public class GameManager : MonoBehaviour
         Instance = this;
         // Reset in case the previous scene ended paused
         Time.timeScale = 1f;
+        if (screenFader == null) screenFader = FindFirstObjectByType<ScreenFader>();
+    }
+
+    private void Start()
+    {
+        // Runs after every Awake, so these overwrite the components' starting values
+        if (!PlayerRunData.HasData || playerHealth == null) return;
+
+        playerHealth.SetCurrentHp(PlayerRunData.Hp);
+        if (playerHealth.TryGetComponent(out PlayerBattery battery)) battery.SetCurrent(PlayerRunData.Battery);
+        if (playerHealth.TryGetComponent(out PlayerAmmo ammo)) ammo.SetCurrent(PlayerRunData.Ammo);
     }
 
     private void OnEnable()
@@ -84,8 +97,20 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        SavePlayerStats();
         Debug.Log($"[GameManager] Level complete, loading scene {nextIndex}");
-        SceneManager.LoadScene(nextIndex);
+        // shortcut: the game keeps running during the fade, so a death mid-fade still shows Game Over; add a state if that matters
+        if (screenFader != null) screenFader.FadeOutAndLoad(SceneUtility.GetScenePathByBuildIndex(nextIndex));
+        else SceneManager.LoadScene(nextIndex);
+    }
+
+    private void SavePlayerStats()
+    {
+        if (playerHealth == null) return;
+
+        float battery = playerHealth.TryGetComponent(out PlayerBattery b) ? b.Current : 0f;
+        int ammo = playerHealth.TryGetComponent(out PlayerAmmo a) ? a.Current : 0;
+        PlayerRunData.Save(playerHealth.CurrentHp, battery, ammo);
     }
 
     public void BossDefeated()

@@ -6,6 +6,8 @@ public class MainMenu : MonoBehaviour
 {
     // must match the scene file name and be added in File > Build Profiles
     [SerializeField] private string firstLevelScene = "Level1";
+    // optional, fades to black before loading; loads right away when empty
+    [SerializeField] private ScreenFader screenFader;
 
     [Header("Panels")]
     [SerializeField] private GameObject mainPanel;
@@ -20,7 +22,9 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(firstLevelScene);
+        PlayerRunData.Clear();
+        if (screenFader != null) screenFader.FadeOutAndLoad(firstLevelScene);
+        else SceneManager.LoadScene(firstLevelScene);
     }
 
     public void OpenCredits()

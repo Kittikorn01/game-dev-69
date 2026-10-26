@@ -34,9 +34,9 @@ public class PlayerAmmo : MonoBehaviour
         SetCurrent(Current + amount);
     }
 
-    private void SetCurrent(int value)
+    public void SetCurrent(int value)
     {
-        Current = value;
+        Current = Mathf.Max(value, 0);
         Debug.Log($"Ammo: {Current}");
         AmmoChanged?.Invoke(Current);
     }

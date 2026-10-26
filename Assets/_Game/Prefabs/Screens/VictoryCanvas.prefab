@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8361788746116858849}
   - component: {fileID: 4320813346348004272}
   - component: {fileID: 2712802461683968169}
+  - component: {fileID: 3206784573060471095}
   m_Layer: 5
   m_Name: VictoryPanel
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3206784573060471095
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718413534540176108}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5612941314091912477
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +100,7 @@ GameObject:
   - component: {fileID: 8702566844783635198}
   - component: {fileID: 939296898647462356}
   - component: {fileID: 3153024044006746485}
+  - component: {fileID: 5913959822209568068}
   m_Layer: 5
   m_Name: Youwin
   m_TagString: Untagged
@@ -213,6 +227,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &5913959822209568068
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5612941314091912477}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8519708804240011696
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,3 +357,9 @@ MonoBehaviour:
   victoryPanel: {fileID: 3718413534540176108}
   endingScene: Ending
   delay: 2
+  showSound: {fileID: 0}
+  showVolume: 1
+  backgroundFadeDuration: 0.5
+  contentGroup: {fileID: 5913959822209568068}
+  contentFadeDuration: 0.5
+  screenFader: {fileID: 0}

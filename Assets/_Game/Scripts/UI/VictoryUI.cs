@@ -18,11 +18,21 @@ public class VictoryUI : MonoBehaviour
     [SerializeField] private AudioClip showSound;
     [SerializeField, Range(0f, 1f)] private float showVolume = 1f;
 
+    [Header("Transition")]
+    // the panel's background fades in first (needs a CanvasGroup on the panel)
+    [SerializeField, Min(0f)] private float backgroundFadeDuration = 0.5f;
+    // then the "YOU WIN" text
+    [SerializeField] private CanvasGroup contentGroup;
+    [SerializeField, Min(0f)] private float contentFadeDuration = 0.5f;
+    // found in the scene when empty; the ending loads right away if there is none
+    [SerializeField] private ScreenFader screenFader;
+
     private GameManager gameManager;
 
     private void Start()
     {
         if (victoryPanel != null) victoryPanel.SetActive(false);
+        if (screenFader == null) screenFader = FindFirstObjectByType<ScreenFader>();
 
         // GameManager sets Instance in Awake, so it is ready by Start
         gameManager = GameManager.Instance;
@@ -41,17 +51,29 @@ public class VictoryUI : MonoBehaviour
 
     private void OnWon()
     {
-        if (victoryPanel != null) victoryPanel.SetActive(true);
-        PlayShowSound();
-        StartCoroutine(LoadEndingAfterDelay());
+        StartCoroutine(ShowThenLoadEnding());
     }
 
-    private IEnumerator LoadEndingAfterDelay()
+    private IEnumerator ShowThenLoadEnding()
     {
-        // GameManager sets timeScale to 0 on win, so wait in real time
+        if (contentGroup != null) contentGroup.alpha = 0f;
+        if (victoryPanel != null) victoryPanel.SetActive(true);
+        PlayShowSound();
+
+        // GameManager sets timeScale to 0 on win, so every wait here is in real time
+        if (victoryPanel != null && victoryPanel.TryGetComponent(out CanvasGroup background))
+            yield return CanvasGroupFade.FadeIn(background, backgroundFadeDuration);
+        if (contentGroup != null) yield return CanvasGroupFade.FadeIn(contentGroup, contentFadeDuration);
+
         yield return new WaitForSecondsRealtime(delay);
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(endingScene);
+
+        // ScreenFader unpauses once the screen is black
+        if (screenFader != null) screenFader.FadeOutAndLoad(endingScene);
+        else
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(endingScene);
+        }
     }
 
     private void PlayShowSound()
