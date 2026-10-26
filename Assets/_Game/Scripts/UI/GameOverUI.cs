@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,11 +16,23 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private AudioClip showSound;
     [SerializeField, Range(0f, 1f)] private float showVolume = 1f;
 
+    [Header("Transition")]
+    // lets the death animation (0.5s) play before the screen appears
+    [SerializeField, Min(0f)] private float showDelay = 1f;
+    // the panel's dark background fades in first (needs a CanvasGroup on the panel)
+    [SerializeField, Min(0f)] private float backgroundFadeDuration = 0.5f;
+    // then the text and buttons under it
+    [SerializeField] private CanvasGroup contentGroup;
+    [SerializeField, Min(0f)] private float contentFadeDuration = 0.5f;
+    // found in the scene when empty; scenes load right away if there is none
+    [SerializeField] private ScreenFader screenFader;
+
     private GameManager gameManager;
 
     private void Start()
     {
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        if (screenFader == null) screenFader = FindFirstObjectByType<ScreenFader>();
 
         // GameManager sets Instance in Awake, so it is ready by Start
         gameManager = GameManager.Instance;
@@ -38,8 +51,30 @@ public class GameOverUI : MonoBehaviour
 
     private void Show()
     {
+        StartCoroutine(ShowSequence());
+    }
+
+    private IEnumerator ShowSequence()
+    {
+        yield return new WaitForSecondsRealtime(showDelay);
+
+        // content stays hidden and unclickable until the background is in
+        if (contentGroup != null)
+        {
+            contentGroup.alpha = 0f;
+            contentGroup.interactable = false;
+        }
         if (gameOverPanel != null) gameOverPanel.SetActive(true);
         PlayShowSound();
+
+        if (gameOverPanel != null && gameOverPanel.TryGetComponent(out CanvasGroup background))
+            yield return CanvasGroupFade.FadeIn(background, backgroundFadeDuration);
+
+        if (contentGroup != null)
+        {
+            yield return CanvasGroupFade.FadeIn(contentGroup, contentFadeDuration);
+            contentGroup.interactable = true;
+        }
     }
 
     private void PlayShowSound()
@@ -59,13 +94,19 @@ public class GameOverUI : MonoBehaviour
         // GameManager pauses the game on death, so unpause before loading
         Time.timeScale = 1f;
         PlayerRunData.Clear();
-        SceneManager.LoadScene(restartScene);
+        Load(restartScene);
     }
 
     public void BackToMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(menuScene);
+        Load(menuScene);
+    }
+
+    private void Load(string sceneName)
+    {
+        if (screenFader != null) screenFader.FadeOutAndLoad(sceneName);
+        else SceneManager.LoadScene(sceneName);
     }
 
     // test only: in Play mode, use the ⋮ menu on this component

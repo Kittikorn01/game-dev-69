@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private Health playerHealth;
+    // found in the scene when empty; the next level loads right away if there is none
+    [SerializeField] private ScreenFader screenFader;
 
     private GameState state = GameState.Playing;
     private int totalGenerators;
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         // Reset in case the previous scene ended paused
         Time.timeScale = 1f;
+        if (screenFader == null) screenFader = FindFirstObjectByType<ScreenFader>();
     }
 
     private void Start()
@@ -96,7 +99,9 @@ public class GameManager : MonoBehaviour
 
         SavePlayerStats();
         Debug.Log($"[GameManager] Level complete, loading scene {nextIndex}");
-        SceneManager.LoadScene(nextIndex);
+        // shortcut: the game keeps running during the fade, so a death mid-fade still shows Game Over; add a state if that matters
+        if (screenFader != null) screenFader.FadeOutAndLoad(SceneUtility.GetScenePathByBuildIndex(nextIndex));
+        else SceneManager.LoadScene(nextIndex);
     }
 
     private void SavePlayerStats()
