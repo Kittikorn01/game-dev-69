@@ -10,6 +10,8 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private PlayerAmmo ammo;
     [SerializeField] private PlayerBattery battery;
     [SerializeField] private Light2D flashlight;
+    // optional: the player's Health, for hurt / death / heal sounds
+    [SerializeField] private Health health;
 
     [Header("Shoot")]
     [SerializeField] private AudioClip shootClip;
@@ -24,6 +26,13 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private AudioClip batteryPickupClip;
     [SerializeField, Range(0f, 1f)] private float pickupVolume = 0.8f;
 
+    [Header("Health")]
+    [SerializeField] private AudioClip hurtClip;
+    [SerializeField] private AudioClip deathClip;
+    // health went up, e.g. a health pickup
+    [SerializeField] private AudioClip healClip;
+    [SerializeField, Range(0f, 1f)] private float healthVolume = 0.9f;
+
     [Header("Flashlight")]
     [SerializeField] private AudioClip flashlightOnClip;
     [SerializeField] private AudioClip flashlightOffClip;
@@ -33,6 +42,7 @@ public class PlayerAudio : MonoBehaviour
     private int lastAmmo;
     private int lastShotFrame = -1;
     private float lastBattery;
+    private int lastHp;
     private bool lastFlashlightOn;
 
     private void Awake()
@@ -45,6 +55,7 @@ public class PlayerAudio : MonoBehaviour
     {
         lastAmmo = ammo.Current;
         lastBattery = battery.Current;
+        if (health != null) lastHp = health.CurrentHp;
         lastFlashlightOn = flashlight.enabled;
     }
 
@@ -52,6 +63,11 @@ public class PlayerAudio : MonoBehaviour
     {
         ammo.AmmoChanged += OnAmmoChanged;
         battery.BatteryChanged += OnBatteryChanged;
+        if (health != null)
+        {
+            health.HealthChanged += OnHealthChanged;
+            health.Died += OnDied;
+        }
         inputReader.AttackPressed += OnAttackPressed;
     }
 
@@ -59,6 +75,11 @@ public class PlayerAudio : MonoBehaviour
     {
         ammo.AmmoChanged -= OnAmmoChanged;
         battery.BatteryChanged -= OnBatteryChanged;
+        if (health != null)
+        {
+            health.HealthChanged -= OnHealthChanged;
+            health.Died -= OnDied;
+        }
         inputReader.AttackPressed -= OnAttackPressed;
     }
 
@@ -92,6 +113,19 @@ public class PlayerAudio : MonoBehaviour
         // skip if this same click just fired the last bullet
         if (ammo.Current > 0 || lastShotFrame == Time.frameCount) return;
         Play(emptyClip, emptyVolume, 1f);
+    }
+
+    // a drop is a hit (death has its own sound), a rise is a heal
+    private void OnHealthChanged(int current, int max)
+    {
+        if (current < lastHp && current > 0) Play(hurtClip, healthVolume, Random.Range(0.95f, 1.05f));
+        else if (current > lastHp) Play(healClip, healthVolume, 1f);
+        lastHp = current;
+    }
+
+    private void OnDied()
+    {
+        Play(deathClip, healthVolume, 1f);
     }
 
     // watch the light itself, so it also clicks when the battery runs out
