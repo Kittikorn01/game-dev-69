@@ -103,7 +103,8 @@ public class GameManager : MonoBehaviour
         if (state != GameState.Playing) return;
 
         state = result;
-        Time.timeScale = 0f;
+        // Only pause on win; on loss the world keeps running and PlayerDeathHandler locks the player
+        if (result == GameState.Won) Time.timeScale = 0f;
         Debug.Log($"[GameManager] Game over: {result}");
 
         if (result == GameState.Won) Won?.Invoke();
