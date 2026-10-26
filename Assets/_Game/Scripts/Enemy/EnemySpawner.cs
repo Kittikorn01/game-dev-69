@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,10 @@ public class EnemySpawner : MonoBehaviour
     // enemies alive at the same time
     [SerializeField, Min(1)] private int maxAlive = 5;
     [SerializeField, Min(0.1f)] private float spawnInterval = 5f;
+    // optional, played at the spawn point before the enemy appears
+    [SerializeField] private SpawnEffect spawnEffectPrefab;
+    // seconds between the effect and the enemy, 0.33 = smoke at its biggest
+    [SerializeField, Min(0f)] private float spawnDelay = 0.33f;
 
     [Header("After all generators are on")]
     [SerializeField] private EnemyBase chaserPrefab;
@@ -20,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
     private readonly List<EnemySpawnPoint> candidates = new List<EnemySpawnPoint>();
     private bool finalPhase;
     private float timer;
+    // enemies waiting for spawnDelay, counted toward maxAlive
+    private int pendingSpawns;
 
     private void Awake()
     {
@@ -63,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
     {
         // enemies destroy themselves on death, so destroyed entries compare equal to null
         aliveEnemies.RemoveAll(enemy => enemy == null);
-        if (aliveEnemies.Count >= maxAlive) return;
+        if (aliveEnemies.Count + pendingSpawns >= maxAlive) return;
 
         candidates.Clear();
         foreach (EnemySpawnPoint point in spawnPoints)
@@ -79,7 +86,19 @@ public class EnemySpawner : MonoBehaviour
         EnemyBase prefab = finalPhase ? chaserPrefab : chosen.GetRandomEnemy();
         if (prefab == null) return;
 
-        EnemyBase enemy = Instantiate(prefab, chosen.Position, Quaternion.identity);
+        StartCoroutine(SpawnAfterEffect(prefab, chosen.Position));
+    }
+
+    // the enemy still comes out if the flashlight hits the point during the delay
+    private IEnumerator SpawnAfterEffect(EnemyBase prefab, Vector2 position)
+    {
+        if (spawnEffectPrefab != null) Instantiate(spawnEffectPrefab, position, Quaternion.identity);
+
+        pendingSpawns++;
+        yield return new WaitForSeconds(spawnDelay);
+        pendingSpawns--;
+
+        EnemyBase enemy = Instantiate(prefab, position, Quaternion.identity);
         aliveEnemies.Add(enemy.gameObject);
     }
 }
