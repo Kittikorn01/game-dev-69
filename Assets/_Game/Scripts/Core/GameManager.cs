@@ -31,6 +31,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    private void Start()
+    {
+        // Runs after every Awake, so these overwrite the components' starting values
+        if (!PlayerRunData.HasData || playerHealth == null) return;
+
+        playerHealth.SetCurrentHp(PlayerRunData.Hp);
+        if (playerHealth.TryGetComponent(out PlayerBattery battery)) battery.SetCurrent(PlayerRunData.Battery);
+        if (playerHealth.TryGetComponent(out PlayerAmmo ammo)) ammo.SetCurrent(PlayerRunData.Ammo);
+    }
+
     private void OnEnable()
     {
         if (playerHealth != null) playerHealth.Died += HandlePlayerDied;
@@ -84,8 +94,18 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        SavePlayerStats();
         Debug.Log($"[GameManager] Level complete, loading scene {nextIndex}");
         SceneManager.LoadScene(nextIndex);
+    }
+
+    private void SavePlayerStats()
+    {
+        if (playerHealth == null) return;
+
+        float battery = playerHealth.TryGetComponent(out PlayerBattery b) ? b.Current : 0f;
+        int ammo = playerHealth.TryGetComponent(out PlayerAmmo a) ? a.Current : 0;
+        PlayerRunData.Save(playerHealth.CurrentHp, battery, ammo);
     }
 
     public void BossDefeated()

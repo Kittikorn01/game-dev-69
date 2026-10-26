@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerRunData.Clear();
         SceneManager.LoadScene(firstLevelScene);
     }
 

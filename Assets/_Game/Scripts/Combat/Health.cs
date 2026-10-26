@@ -40,6 +40,13 @@ public class Health : MonoBehaviour, IDamageable
         if (currentHp == 0) Died?.Invoke();
     }
 
+    // Restores a saved value (e.g. carried over from the previous level); never kills
+    public void SetCurrentHp(int value)
+    {
+        currentHp = Mathf.Clamp(value, 1, maxHp);
+        HealthChanged?.Invoke(currentHp, maxHp);
+    }
+
     public void Heal(int amount)
     {
         // Dead stay dead; full HP is a no-op so listeners never see a fake change

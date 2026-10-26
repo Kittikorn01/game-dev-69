@@ -18,8 +18,8 @@ EditorBuildSettings:
     path: Assets/_Game/Scenes/Map/Level2.unity
     guid: 69c4033b70d0667448dd9a265baf5b05
   - enabled: 1
-    path: Assets/_Game/Scenes/Dev/TUM/Boss.unity
-    guid: bcbae00a8343c564f83804a5c5d330d5
+    path: Assets/_Game/Scenes/Map/Level3.unity
+    guid: e9023d154b084e58b7d072588f5f2dfb
   - enabled: 1
     path: Assets/_Game/Scenes/Ending.unity
     guid: ef4f4a2ab149f489895cebc9c8c426c6

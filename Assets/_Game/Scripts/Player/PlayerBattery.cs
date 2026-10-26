@@ -31,7 +31,7 @@ public class PlayerBattery : MonoBehaviour
         SetCurrent(Current + amount);
     }
 
-    private void SetCurrent(float value)
+    public void SetCurrent(float value)
     {
         float previous = Current;
         Current = Mathf.Clamp(value, 0f, maxBattery);

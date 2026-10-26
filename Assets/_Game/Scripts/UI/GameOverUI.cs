@@ -40,6 +40,7 @@ public class GameOverUI : MonoBehaviour
     {
         // GameManager pauses the game on death, so unpause before loading
         Time.timeScale = 1f;
+        PlayerRunData.Clear();
         SceneManager.LoadScene(restartScene);
     }
 
