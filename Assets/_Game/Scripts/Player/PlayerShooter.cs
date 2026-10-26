@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
@@ -9,6 +10,8 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float fireCooldown = 0.2f;
 
     private float nextFireTime;
+
+    public event Action Fired;
 
     private void OnEnable()
     {
@@ -26,6 +29,9 @@ public class PlayerShooter : MonoBehaviour
         if (!ammo.TryConsume()) return;
 
         nextFireTime = Time.time + fireCooldown;
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // TransformDirection, not firePoint.rotation: the gun is mirrored with negative scale, which rotation ignores
+        Vector3 direction = firePoint.TransformDirection(Vector3.up);
+        Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(Vector3.forward, direction));
+        Fired?.Invoke();
     }
 }
