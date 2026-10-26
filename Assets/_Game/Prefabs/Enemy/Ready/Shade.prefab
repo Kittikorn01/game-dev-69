@@ -333,7 +333,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eefd3db8da3274fa2b2dc180799ea00b, type: 3}
   - {fileID: 8300000, guid: c71ed0adedff54974a1837e7e1d42097, type: 3}
   idleInterval: {x: 4, y: 9}
-  volume: 0.8
-  idleVolume: 0.5
+  volume: 0.7
+  idleVolume: 0.4
   pitchRange: {x: 0.9, y: 1.1}
   hurtSoundCooldown: 0.1

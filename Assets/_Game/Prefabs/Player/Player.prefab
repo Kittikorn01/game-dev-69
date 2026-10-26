@@ -297,7 +297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6789046722883287160
 Transform:
   m_ObjectHideFlags: 0
@@ -404,6 +404,8 @@ GameObject:
   - component: {fileID: 7344549980238050773}
   - component: {fileID: 6721784160178094942}
   - component: {fileID: 6365428102496456988}
+  - component: {fileID: 2976186529825699122}
+  - component: {fileID: 1968637227003962365}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -646,6 +648,135 @@ MonoBehaviour:
   hideOnDeath:
   - {fileID: 5947953875474207005}
   - {fileID: 4253266046311845619}
+--- !u!82 &2976186529825699122
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633670010938090283}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1968637227003962365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633670010938090283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf15196542304e32bf5e08cb108eca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
+  inputReader: {fileID: 6903091261374229689}
+  ammo: {fileID: 8217011181815588477}
+  battery: {fileID: 4487338465989782853}
+  flashlight: {fileID: 5071961732863141435}
+  health: {fileID: 7344549980238050773}
+  shootClip: {fileID: 8300000, guid: 2d917637a97174a6f811d18f2e33d5b1, type: 3}
+  shootVolume: 0.7
+  shootPitchRange: {x: 0.95, y: 1.05}
+  emptyClip: {fileID: 8300000, guid: fd8b69fc4c1ce4474b363917ff5fa392, type: 3}
+  emptyVolume: 1
+  ammoPickupClip: {fileID: 8300000, guid: 8303c8c761a494a2390187bba72efcc2, type: 3}
+  batteryPickupClip: {fileID: 8300000, guid: 761543889e06a46a3b960f3c85d0f0c6, type: 3}
+  pickupVolume: 1
+  hurtClip: {fileID: 8300000, guid: b15db6edde2924c7e82e34af54bf07e1, type: 3}
+  deathClip: {fileID: 8300000, guid: b15db6edde2924c7e82e34af54bf07e1, type: 3}
+  healClip: {fileID: 8300000, guid: 7059580bd747e4a2a95ccdae69412732, type: 3}
+  healthVolume: 0.8
+  flashlightOnClip: {fileID: 8300000, guid: f48a90a72be4945e5a1d426ad104dcb0, type: 3}
+  flashlightOffClip: {fileID: 8300000, guid: 4aaa8464c5c43422bae9b0652b6a3e5b, type: 3}
+  flashlightVolume: 1
 --- !u!1 &5947953875474207005
 GameObject:
   m_ObjectHideFlags: 0

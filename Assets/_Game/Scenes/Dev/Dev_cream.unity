@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chaser
       objectReference: {fileID: 0}
+    - target: {fileID: 6392448965866793088, guid: ced9c12cfe6093d4f8eabf27fb826f1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -636,6 +640,11 @@ MonoBehaviour:
   menuScene: MainMenu
   showSound: {fileID: 0}
   showVolume: 1
+  showDelay: 1
+  backgroundFadeDuration: 0.5
+  contentGroup: {fileID: 0}
+  contentFadeDuration: 0.5
+  screenFader: {fileID: 0}
 --- !u!114 &277447704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,6 +880,10 @@ PrefabInstance:
     - target: {fileID: 3090693975497141813, guid: 413866ad275f5784090187c35ffe724d, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090693975497141813, guid: 413866ad275f5784090187c35ffe724d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6707825336731636683, guid: 413866ad275f5784090187c35ffe724d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1875,6 +1888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shade
       objectReference: {fileID: 0}
+    - target: {fileID: 4737700942380350116, guid: e6cd284ed095683478cf30d9c84a2966, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2010,6 +2027,10 @@ PrefabInstance:
     - target: {fileID: 5852470263441365207, guid: 18b410524ce0e364a9ae1b91d16214ed, type: 3}
       propertyPath: m_Name
       value: Freezer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852470263441365207, guid: 18b410524ce0e364a9ae1b91d16214ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2172,10 +2193,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2925166626970295531, guid: 7431d3d9cc7f72449a10eee7c97eac94, type: 3}
-      propertyPath: showSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 95445a21f4900404d876a459af6b8209, type: 3}
     - target: {fileID: 5900413712181019916, guid: 7431d3d9cc7f72449a10eee7c97eac94, type: 3}
       propertyPath: m_Pivot.x
       value: 0

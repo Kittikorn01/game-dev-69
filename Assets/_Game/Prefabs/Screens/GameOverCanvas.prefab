@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
   clickClip: {fileID: 8300000, guid: 0376a12e84ea94028b564a3ff3f05ee7, type: 3}
-  volume: 0.8
+  volume: 1
 --- !u!1 &1159380221347167260
 GameObject:
   m_ObjectHideFlags: 0
