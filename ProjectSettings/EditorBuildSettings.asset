@@ -6,8 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Game/Scenes/Dev/Dev_Tum_Lead.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/_Game/Scenes/MainMenu.unity
+    guid: c562d7702a660469ca59b18872aeae36
+  - enabled: 1
+    path: Assets/_Game/Scenes/Intro.unity
+    guid: 9ee2b69ad5e4a4613bb5586fcd431c28
+  - enabled: 1
+    path: Assets/_Game/Scenes/Map/Level1.unity
+    guid: 1ea0c9fdc874bf54b89a48738f2c6e2d
+  - enabled: 1
+    path: Assets/_Game/Scenes/Map/Level2.unity
+    guid: 69c4033b70d0667448dd9a265baf5b05
+  - enabled: 1
+    path: Assets/_Game/Scenes/Dev/TUM/Boss.unity
+    guid: bcbae00a8343c564f83804a5c5d330d5
+  - enabled: 1
+    path: Assets/_Game/Scenes/Ending.unity
+    guid: ef4f4a2ab149f489895cebc9c8c426c6
   m_configObjects:
+    com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
