@@ -357,8 +357,8 @@ MonoBehaviour:
   victoryPanel: {fileID: 3718413534540176108}
   endingScene: Ending
   delay: 2
-  showSound: {fileID: 0}
-  showVolume: 1
+  showSound: {fileID: 8300000, guid: 95445a21f4900404d876a459af6b8209, type: 3}
+  showVolume: 0.7
   backgroundFadeDuration: 0.5
   contentGroup: {fileID: 5913959822209568068}
   contentFadeDuration: 0.5
