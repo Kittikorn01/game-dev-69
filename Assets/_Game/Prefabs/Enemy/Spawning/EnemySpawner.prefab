@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2186550031312793629}
   - component: {fileID: 8054348703733019937}
+  - component: {fileID: 5695616804123439714}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -48,9 +49,22 @@ MonoBehaviour:
   flashlight: {fileID: 0}
   maxAlive: 5
   spawnInterval: 5
-  spawnEffectPrefab: {fileID: 272893415945068448, guid: f34d6cd8d3e349d47a21530a6d1d1037, type: 3}
   chaserPrefab: {fileID: 1736738389459558531, guid: ced9c12cfe6093d4f8eabf27fb826f1d, type: 3}
   finalSpawnInterval: 2
+--- !u!114 &5695616804123439714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350026776227299310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2012deed12a68f4418b71344c421fd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectSpawner
+  spawnEffectPrefab: {fileID: 272893415945068448, guid: f34d6cd8d3e349d47a21530a6d1d1037, type: 3}
+  spawnDelay: 0.33
 --- !u!1001 &1777908583874222625
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 // Summons one minion every interval at a child EnemySpawnPoint outside the flashlight beam.
 // The minion type is picked by weight from a list that changes once HP drops low enough.
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(EffectSpawner))]
 public class BossSummoner : MonoBehaviour
 {
     // found in the scene when empty, since a prefab asset can't reference scene objects
@@ -17,6 +18,7 @@ public class BossSummoner : MonoBehaviour
     [SerializeField] private WeightedEnemy[] phaseTwoEnemies;
 
     private Health health;
+    private EffectSpawner effectSpawner;
     private EnemySpawnPoint[] spawnPoints;
     private readonly List<GameObject> aliveMinions = new List<GameObject>();
     private readonly List<EnemySpawnPoint> candidates = new List<EnemySpawnPoint>();
@@ -30,6 +32,7 @@ public class BossSummoner : MonoBehaviour
     private void Awake()
     {
         health = GetComponent<Health>();
+        effectSpawner = GetComponent<EffectSpawner>();
 
         spawnPoints = GetComponentsInChildren<EnemySpawnPoint>();
         if (spawnPoints.Length == 0) Debug.LogWarning($"[BossSummoner] No EnemySpawnPoint children: {name}", this);
@@ -63,7 +66,7 @@ public class BossSummoner : MonoBehaviour
     {
         // minions destroy themselves on death, so destroyed entries compare equal to null
         aliveMinions.RemoveAll(minion => minion == null);
-        if (aliveMinions.Count >= maxAlive) return;
+        if (aliveMinions.Count + effectSpawner.PendingCount >= maxAlive) return;
 
         candidates.Clear();
         foreach (EnemySpawnPoint point in spawnPoints)
@@ -78,14 +81,17 @@ public class BossSummoner : MonoBehaviour
         if (prefab == null) return;
 
         EnemySpawnPoint chosen = candidates[Random.Range(0, candidates.Count)];
-        EnemyBase minion = Instantiate(prefab, chosen.Position, Quaternion.identity);
-        aliveMinions.Add(minion.gameObject);
+        effectSpawner.Spawn(prefab, chosen.Position, minion => aliveMinions.Add(minion.gameObject));
+        // fired with the smoke, not when the minion appears
         Summoned?.Invoke();
     }
 
     // Light damage so armor-like Health subclasses can't block it and each minion plays its own death
     private void KillAllMinions()
     {
+        // minions still behind their smoke would appear after the boss is dead
+        effectSpawner.CancelAll();
+
         foreach (GameObject minion in aliveMinions)
         {
             if (minion == null) continue;
