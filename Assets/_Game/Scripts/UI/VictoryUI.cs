@@ -13,6 +13,11 @@ public class VictoryUI : MonoBehaviour
     // seconds to show the panel before loading the ending (real time, the game is paused on win)
     [SerializeField, Min(0f)] private float delay = 2f;
 
+    [Header("Sound (optional)")]
+    // played once when the screen appears
+    [SerializeField] private AudioClip showSound;
+    [SerializeField, Range(0f, 1f)] private float showVolume = 1f;
+
     private GameManager gameManager;
 
     private void Start()
@@ -37,6 +42,7 @@ public class VictoryUI : MonoBehaviour
     private void OnWon()
     {
         if (victoryPanel != null) victoryPanel.SetActive(true);
+        PlayShowSound();
         StartCoroutine(LoadEndingAfterDelay());
     }
 
@@ -46,6 +52,18 @@ public class VictoryUI : MonoBehaviour
         yield return new WaitForSecondsRealtime(delay);
         Time.timeScale = 1f;
         SceneManager.LoadScene(endingScene);
+    }
+
+    private void PlayShowSound()
+    {
+        if (showSound == null) return;
+        AudioSource source = GetComponent<AudioSource>();
+        if (source == null) source = gameObject.AddComponent<AudioSource>();
+        source.playOnAwake = false;
+        source.spatialBlend = 0f;
+        // the game is paused on this screen, so make sure the sound still plays
+        source.ignoreListenerPause = true;
+        source.PlayOneShot(showSound, showVolume);
     }
 
     // test only: in Play mode, use the ⋮ menu on this component

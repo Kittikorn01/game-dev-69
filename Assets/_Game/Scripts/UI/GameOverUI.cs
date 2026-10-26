@@ -10,6 +10,11 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private string restartScene = "Level1";
     [SerializeField] private string menuScene = "MainMenu";
 
+    [Header("Sound (optional)")]
+    // played once when the screen appears
+    [SerializeField] private AudioClip showSound;
+    [SerializeField, Range(0f, 1f)] private float showVolume = 1f;
+
     private GameManager gameManager;
 
     private void Start()
@@ -34,6 +39,19 @@ public class GameOverUI : MonoBehaviour
     private void Show()
     {
         if (gameOverPanel != null) gameOverPanel.SetActive(true);
+        PlayShowSound();
+    }
+
+    private void PlayShowSound()
+    {
+        if (showSound == null) return;
+        AudioSource source = GetComponent<AudioSource>();
+        if (source == null) source = gameObject.AddComponent<AudioSource>();
+        source.playOnAwake = false;
+        source.spatialBlend = 0f;
+        // the game is paused on this screen, so make sure the sound still plays
+        source.ignoreListenerPause = true;
+        source.PlayOneShot(showSound, showVolume);
     }
 
     public void Restart()
