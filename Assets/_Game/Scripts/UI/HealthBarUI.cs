@@ -1,30 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-// Drives the HPBar width from the player's current HP.
+// Drives a Filled Image's fillAmount from the player's current HP.
 // Listens to Health.HealthChanged, so it only updates when HP actually changes.
+// The bar Image must have Image Type = Filled (e.g. Horizontal) for this to show.
 public class HealthBarUI : MonoBehaviour
 {
     [Tooltip("Optional. Leave empty to find the object tagged Player.")]
     [SerializeField] private Health health;
 
-    private RectTransform barRect;
-    private float fullWidth;
+    [Tooltip("The fill Image (Image Type = Filled). Leave empty to use the Image on this object.")]
+    [SerializeField] private Image fillImage;
 
     private void Awake()
     {
-        barRect = (RectTransform)transform;
-
-        // Remember the designed width, then anchor the bar to its left edge so it
-        // drains right-to-left. The pivot shift is compensated so the bar does
-        // not move on screen.
-        fullWidth = barRect.rect.width;
-
-        Vector2 oldPivot = barRect.pivot;
-        Vector2 newPivot = new Vector2(0f, oldPivot.y);
-        Vector2 size = barRect.rect.size;
-        Vector2 deltaPivot = newPivot - oldPivot;
-        barRect.anchoredPosition += new Vector2(deltaPivot.x * size.x, deltaPivot.y * size.y);
-        barRect.pivot = newPivot;
+        if (fillImage == null) fillImage = GetComponent<Image>();
     }
 
     private void OnEnable()
@@ -50,9 +40,16 @@ public class HealthBarUI : MonoBehaviour
         if (health != null) health.HealthChanged -= UpdateBar;
     }
 
+    private void Start()
+    {
+        // Awake order isn't guaranteed across objects; Start runs after every
+        // Awake, so the first fill shown on screen is correct.
+        if (health != null) UpdateBar(health.CurrentHp, health.MaxHp);
+    }
+
     private void UpdateBar(int current, int max)
     {
-        float ratio = max > 0 ? (float)current / max : 0f;
-        barRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, fullWidth * ratio);
+        if (fillImage == null) return;
+        fillImage.fillAmount = max > 0 ? (float)current / max : 0f;
     }
 }
