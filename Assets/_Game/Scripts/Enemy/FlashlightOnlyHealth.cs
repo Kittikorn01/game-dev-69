@@ -9,5 +9,6 @@ public class FlashlightOnlyHealth : Health
     public override void TakeDamage(int amount)
     {
         // Immune to ordinary damage, even while illuminated.
+        RaiseDamageBlocked();
     }
 }
