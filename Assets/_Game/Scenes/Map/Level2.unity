@@ -278,6 +278,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1169137180003773512, guid: dd23b22088134264e8495891c1748e6d, type: 3}
   m_PrefabInstance: {fileID: 175846720}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &177857064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177857066}
+  - component: {fileID: 177857065}
+  m_Layer: 0
+  m_Name: LevelIntroPan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &177857065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177857064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82845d66546e8fe4b8ca52c09ebb410c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelIntroPan
+  cameraFollow: {fileID: 1734109631}
+  panTarget: {fileID: 318026290}
+  lockDuringIntro:
+  - {fileID: 986413422}
+  - {fileID: 986413421}
+  startDelay: 1.5
+  panDuration: 1.5
+  holdDuration: 1
+--- !u!4 &177857066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177857064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &224331943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1354,6 +1406,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3021707568808462025, guid: e3853d4ff51f92b47af43d99a0b3475c, type: 3}
   m_PrefabInstance: {fileID: 986413419}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &986413421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7746062763434116984, guid: e3853d4ff51f92b47af43d99a0b3475c, type: 3}
+  m_PrefabInstance: {fileID: 986413419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0896a7efc120944833705643b36fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
+--- !u!114 &986413422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6903091261374229689, guid: e3853d4ff51f92b47af43d99a0b3475c, type: 3}
+  m_PrefabInstance: {fileID: 986413419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dab9ddb19e682d4eba4031a78353c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputReader
 --- !u!1001 &1070371806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1908,6 +1982,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3016869770035280935, guid: 7d8df6e0efba24049a61b372119a2095, type: 3}
   m_PrefabInstance: {fileID: 1734109628}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1734109631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 813050391611266381, guid: 7d8df6e0efba24049a61b372119a2095, type: 3}
+  m_PrefabInstance: {fileID: 1734109628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e436121595a754d91183509d653640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
 --- !u!1 &1829908702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,3 +2497,4 @@ SceneRoots:
   - {fileID: 910046097}
   - {fileID: 1829908705}
   - {fileID: 224331943}
+  - {fileID: 177857066}
