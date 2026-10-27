@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 // Screen HUD for collecting generators.
 // Shows "Press E" when the player is near an un-collected generator, then swaps
-// to a radial fill while they hold to collect it.
+// to a radial fill while they hold to collect it. Unfinished progress stays
+// shown under the prompt.
 // It reads only the generator's PUBLIC state (Progress, IsActivated) and does
 // its own distance check, so Generator.cs stays untouched.
 public class InteractPromptUI : MonoBehaviour
@@ -16,6 +17,9 @@ public class InteractPromptUI : MonoBehaviour
 
     [Tooltip("Radial Image shown while collecting. Its fillAmount is set to the progress.")]
     [SerializeField] private Image progressCircle;
+
+    [Tooltip("Optional. Shown and hidden instead of the circle, e.g. a parent that also holds a ring behind it. Leave empty to toggle the circle itself.")]
+    [SerializeField] private GameObject progressRoot;
 
     [Tooltip("How close (in world units) counts as 'in range'. Tune to match the generator trigger.")]
     [SerializeField, Min(0.1f)] private float interactRange = 2f;
@@ -50,22 +54,19 @@ public class InteractPromptUI : MonoBehaviour
             return;
         }
 
-        if (target.Progress > 0f)
-        {
-            // collecting: hide the prompt, show the filling circle
-            if (pressEPrompt != null) pressEPrompt.SetActive(false);
-            if (progressCircle != null)
-            {
-                if (!progressCircle.gameObject.activeSelf) progressCircle.gameObject.SetActive(true);
-                progressCircle.fillAmount = target.Progress;
-            }
-        }
-        else
-        {
-            // in range, not holding yet: show the prompt only
-            if (pressEPrompt != null) pressEPrompt.SetActive(true);
-            if (progressCircle != null) progressCircle.gameObject.SetActive(false);
-        }
+        // the prompt hides only while E is held; progress kept from an earlier hold
+        // stays visible next to it so the player knows to come back and finish
+        bool holding = target.IsHolding;
+        if (pressEPrompt != null) pressEPrompt.SetActive(!holding);
+        SetCircleVisible(holding || target.Progress > 0f);
+        if (progressCircle != null) progressCircle.fillAmount = target.Progress;
+    }
+
+    private void SetCircleVisible(bool visible)
+    {
+        GameObject circle = progressRoot != null ? progressRoot
+            : progressCircle != null ? progressCircle.gameObject : null;
+        if (circle != null && circle.activeSelf != visible) circle.SetActive(visible);
     }
 
     // Nearest generator that is in range and still off (null if none).
@@ -94,6 +95,6 @@ public class InteractPromptUI : MonoBehaviour
     private void Hide()
     {
         if (pressEPrompt != null) pressEPrompt.SetActive(false);
-        if (progressCircle != null) progressCircle.gameObject.SetActive(false);
+        SetCircleVisible(false);
     }
 }
