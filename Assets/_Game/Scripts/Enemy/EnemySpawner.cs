@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Spawns enemies at child EnemySpawnPoints that are outside the flashlight beam.
+// Spawns enemies at child EnemySpawnPoints, optionally only those outside the flashlight beam.
 // After all generators are on, only the chaser spawns, at a faster rate.
 [RequireComponent(typeof(EffectSpawner))]
 public class EnemySpawner : MonoBehaviour
 {
     // found in the scene when empty, since a prefab asset can't reference scene objects
     [SerializeField] private FlashlightDetector flashlight;
+    // true = skip spawn points inside the flashlight beam
+    [SerializeField] private bool avoidLitPoints = false;
     // enemies alive at the same time
     [SerializeField, Min(1)] private int maxAlive = 5;
     [SerializeField, Min(0.1f)] private float spawnInterval = 5f;
@@ -84,8 +86,8 @@ public class EnemySpawner : MonoBehaviour
         foreach (EnemySpawnPoint point in spawnPoints)
         {
             if (finalPhase && !point.Allows(chaserPrefab)) continue;
-            // the player must never see an enemy pop up inside the beam
-            if (flashlight != null && flashlight.IsPointLit(point.Position)) continue;
+            // optionally keep enemies from popping up inside the beam
+            if (avoidLitPoints && flashlight != null && flashlight.IsPointLit(point.Position)) continue;
             candidates.Add(point);
         }
         if (candidates.Count == 0) return;
