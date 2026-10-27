@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3350026776227299310, guid: 0d15a74ec651bee4897b49c7093da3ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4410660366108223198, guid: 0d15a74ec651bee4897b49c7093da3ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.29
@@ -351,7 +355,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 497641152037973579, guid: a3a15da084e000f409632c32de340831, type: 3}
       propertyPath: m_Intensity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2239361701760502179, guid: a3a15da084e000f409632c32de340831, type: 3}
       propertyPath: m_LocalPosition.x
@@ -400,8 +404,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2803679934972439798, guid: a3a15da084e000f409632c32de340831, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1086885742}
   m_SourcePrefab: {fileID: 100100000, guid: a3a15da084e000f409632c32de340831, type: 3}
+--- !u!1 &1086885741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2803679934972439798, guid: a3a15da084e000f409632c32de340831, type: 3}
+  m_PrefabInstance: {fileID: 1086885740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1086885742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086885741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f14b89a6ebdea40bcfff0eb1861a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GeneratorLighting
+  globalLight: {fileID: 0}
+  targetIntensity: 0.6
+  fadeDuration: 2
 --- !u!1001 &1147540842
 PrefabInstance:
   m_ObjectHideFlags: 0
