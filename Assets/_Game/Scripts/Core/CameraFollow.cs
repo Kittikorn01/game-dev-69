@@ -8,6 +8,12 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 velocity;
 
+    public Transform Target
+    {
+        get => target;
+        set => target = value;
+    }
+
     private void Start()
     {
         // Lets the prefab be dropped into any scene without manual wiring
