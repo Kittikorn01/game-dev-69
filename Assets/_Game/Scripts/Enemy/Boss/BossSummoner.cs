@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Summons one minion every interval at a child EnemySpawnPoint outside the flashlight beam.
+// Summons summonCount minions every interval at child EnemySpawnPoints, optionally only outside the flashlight beam.
 // The minion type is picked by weight from a list that changes once HP drops low enough.
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(EffectSpawner))]
@@ -9,7 +9,11 @@ public class BossSummoner : MonoBehaviour
 {
     // found in the scene when empty, since a prefab asset can't reference scene objects
     [SerializeField] private FlashlightDetector flashlight;
+    // true = skip spawn points inside the flashlight beam
+    [SerializeField] private bool avoidLitPoints = false;
     [SerializeField, Min(0.1f)] private float summonInterval = 3f;
+    // minions summoned together each interval, each at a different point
+    [SerializeField, Min(1)] private int summonCount = 1;
     // minions alive at the same time
     [SerializeField, Min(1)] private int maxAlive = 5;
     // at or below this share of max HP the phase two list is used
@@ -71,19 +75,28 @@ public class BossSummoner : MonoBehaviour
         candidates.Clear();
         foreach (EnemySpawnPoint point in spawnPoints)
         {
-            // the player must never see a minion pop up inside the beam
-            if (flashlight != null && flashlight.IsPointLit(point.Position)) continue;
+            // optionally keep minions from popping up inside the beam
+            if (avoidLitPoints && flashlight != null && flashlight.IsPointLit(point.Position)) continue;
             candidates.Add(point);
         }
         if (candidates.Count == 0) return;
 
-        EnemyBase prefab = PickEnemy(IsPhaseTwo ? phaseTwoEnemies : phaseOneEnemies);
-        if (prefab == null) return;
+        int count = Mathf.Min(summonCount, maxAlive - (aliveMinions.Count + effectSpawner.PendingCount), candidates.Count);
+        int summoned = 0;
+        for (int i = 0; i < count; i++)
+        {
+            EnemyBase prefab = PickEnemy(IsPhaseTwo ? phaseTwoEnemies : phaseOneEnemies);
+            if (prefab == null) break;
 
-        EnemySpawnPoint chosen = candidates[Random.Range(0, candidates.Count)];
-        effectSpawner.Spawn(prefab, chosen.Position, minion => aliveMinions.Add(minion.gameObject));
-        // fired with the smoke, not when the minion appears
-        Summoned?.Invoke();
+            // removed so two minions never share a point in the same summon
+            int index = Random.Range(0, candidates.Count);
+            EnemySpawnPoint chosen = candidates[index];
+            candidates.RemoveAt(index);
+            effectSpawner.Spawn(prefab, chosen.Position, minion => aliveMinions.Add(minion.gameObject));
+            summoned++;
+        }
+        // fired once per summon with the smoke, not when the minions appear
+        if (summoned > 0) Summoned?.Invoke();
     }
 
     // Light damage so armor-like Health subclasses can't block it and each minion plays its own death
