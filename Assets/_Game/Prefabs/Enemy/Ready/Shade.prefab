@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicChaseEnemy
   moveSpeed: 2
-  damage: 1
+  damage: 2
   attackRange: 1
-  attackCooldown: 1
+  attackCooldown: 1.5
   deathDelay: 0.58
   target: {fileID: 0}
 --- !u!114 &629076584442520174
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2acd66ec46cb9424e87e73776331cd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightDamageReaction
-  damagePerTick: 1
+  damagePerTick: 2
   tickInterval: 0.5
 --- !u!114 &8846647051293562266
 MonoBehaviour:
