@@ -50,6 +50,13 @@ public class BatteryBarUI : MonoBehaviour
         if (battery != null) battery.BatteryChanged -= UpdateBar;
     }
 
+    private void Start()
+    {
+        // Awake order isn't guaranteed across objects; Start runs after every
+        // Awake, so the first width shown on screen is correct.
+        if (battery != null) UpdateBar(battery.Normalized);
+    }
+
     private void UpdateBar(float normalized)
     {
         barRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, fullWidth * Mathf.Clamp01(normalized));
