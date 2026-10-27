@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Freezer
       objectReference: {fileID: 0}
+    - target: {fileID: 3201465000707252617, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: maxHp
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4095723337286067942, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -28,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4387914324410682138, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: sightRange
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6081879293264825590, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Size.y
       value: 0.9
@@ -42,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7103386578714664274, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.01
       objectReference: {fileID: 0}
     - target: {fileID: 7103386578714664274, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.29
       objectReference: {fileID: 0}
     - target: {fileID: 7103386578714664274, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -131,10 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aef5e1d24ad43fa9d773b9fad2d7a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicChaseEnemy
-  moveSpeed: 2
+  moveSpeed: 4
   damage: 1
   attackRange: 1
-  attackCooldown: 1
+  attackCooldown: 1.5
   deathDelay: 0.5
   target: {fileID: 0}
 --- !u!114 &7887386832247156335
