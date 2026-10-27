@@ -9,6 +9,8 @@ public class Health : MonoBehaviour, IDamageable
 
     public event Action<int, int> HealthChanged;
     public event Action Died;
+    // a hit that a subclass refused, e.g. a bullet on a flashlight-only enemy
+    public event Action DamageBlocked;
 
     public int CurrentHp => currentHp;
     public int MaxHp => maxHp;
@@ -38,6 +40,12 @@ public class Health : MonoBehaviour, IDamageable
         currentHp = Mathf.Max(currentHp - amount, 0);
         HealthChanged?.Invoke(currentHp, maxHp);
         if (currentHp == 0) Died?.Invoke();
+    }
+
+    protected void RaiseDamageBlocked()
+    {
+        // the dead show no feedback, same as ApplyDamage
+        if (currentHp > 0) DamageBlocked?.Invoke();
     }
 
     // Restores a saved value (e.g. carried over from the previous level); never kills
