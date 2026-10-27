@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112f37447615f5f47893ff966a31633f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss
-  defeatDelay: 1.5
+  defeatDelay: 2
 --- !u!114 &2685689761608157144
 MonoBehaviour:
   m_ObjectHideFlags: 0
