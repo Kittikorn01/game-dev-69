@@ -15,6 +15,8 @@ public class EnemySpawner : MonoBehaviour
     [Header("After all generators are on")]
     [SerializeField] private EnemyBase chaserPrefab;
     [SerializeField, Min(0.1f)] private float finalSpawnInterval = 2f;
+    // true = stop spawning instead, e.g. before a boss fight
+    [SerializeField] private bool stopWhenGeneratorsOn = false;
 
     private EffectSpawner effectSpawner;
     private EnemySpawnPoint[] spawnPoints;
@@ -59,6 +61,15 @@ public class EnemySpawner : MonoBehaviour
 
     private void EnterFinalPhase()
     {
+        if (stopWhenGeneratorsOn)
+        {
+            // enemies still behind their smoke would appear after the wipe
+            effectSpawner.CancelAll();
+            enabled = false;
+            Debug.Log("[EnemySpawner] All generators on, spawning stopped");
+            return;
+        }
+
         finalPhase = true;
         Debug.Log("[EnemySpawner] All generators on, only chasers spawn now");
     }
