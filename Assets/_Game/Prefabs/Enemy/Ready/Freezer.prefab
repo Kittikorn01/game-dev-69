@@ -88,6 +88,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7375287228605329726, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: entries.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375287228605329726, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: entries.Array.data[0].chance
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375287228605329726, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: entries.Array.data[1].chance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375287228605329726, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: entries.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 1670862779623079000, guid: dd23b22088134264e8495891c1748e6d, type: 3}
+    - target: {fileID: 7375287228605329726, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: entries.Array.data[2].chance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375287228605329726, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
+      propertyPath: entries.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 4379813945744162336, guid: a36a0c961c281ba4eb863bd3858c6ddc, type: 3}
     - target: {fileID: 8075673931598188281, guid: 120688be985151643b74eb4e3b14c2c4, type: 3}
       propertyPath: m_Size.x
       value: 1.2
